@@ -1,0 +1,16 @@
+[
+{
+  "modid": "plantador",
+  "name": "Plantador",
+  "description": "We love Plantation, We love Latifondism, We are Plantador.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Raffaele F. Mancino"],
+  "credits": "No Money, No Credits XD",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
