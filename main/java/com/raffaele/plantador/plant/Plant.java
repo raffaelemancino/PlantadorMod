@@ -19,7 +19,7 @@ package com.raffaele.plantador.plant;
 import com.raffaele.plantador.Info;
 import com.raffaele.plantador.plant.cotton.CottonBlock;
 import com.raffaele.plantador.plant.tobacco.TobaccoBlock;
-import com.raffaele.plantador.plant.tobacco.TobaccoGrassBlock;
+import com.raffaele.plantador.plant.tobacco.Pipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -40,16 +40,16 @@ public class Plant {
     public static Item cottonSeed;
     public static Item cottonCrop;
     
-    public static Block tobaccoGrass;//create tobacco tall grass
     public static Block tobaccoBlock;
     public static Item tobaccoSeed;
     public static Item tobaccoCrop;
     public static Item tobacco;
+    //public static Item pipe;
     
     public static void preInit()
     {
         cottonBlock = new CottonBlock();
-        cottonBlock.setBlockName("cotton_block").setBlockTextureName(Info.ID + ":cotton/cotton").setTickRandomly(true);
+        cottonBlock.setBlockName("cotton_block").setBlockTextureName(Info.ID + ":cotton/cotton");
         
         cottonSeed = new ItemSeeds(cottonBlock, Blocks.farmland);
         cottonSeed.setCreativeTab(CreativeTabs.tabMisc).setUnlocalizedName("cotton_seed").setTextureName(Info.ID + ":cotton/cotton_seed");
@@ -61,9 +61,6 @@ public class Plant {
         GameRegistry.registerItem(cottonSeed, cottonSeed.getUnlocalizedName());
         MinecraftForge.addGrassSeed(new ItemStack(cottonSeed), 10);
         GameRegistry.registerItem(cottonCrop, cottonCrop.getUnlocalizedName());
-        
-        tobaccoGrass = new TobaccoGrassBlock();
-        tobaccoGrass.setCreativeTab(CreativeTabs.tabDecorations).setBlockName("tobacco_grass").setBlockTextureName(Info.ID + ":tobacco/tobacco_grass");
 
         tobaccoBlock = new TobaccoBlock();
         tobaccoBlock.setBlockName("tobacco_block").setBlockTextureName(Info.ID + ":tobacco/tobacco");
@@ -77,12 +74,15 @@ public class Plant {
         tobacco = new Item();
         tobacco.setCreativeTab(CreativeTabs.tabMisc).setUnlocalizedName("tobacco").setTextureName(Info.ID + ":tobacco/tobacco");
         
-        GameRegistry.registerBlock(tobaccoGrass, tobaccoGrass.getUnlocalizedName());
+        //pipe = new Pipe();
+        //pipe.setCreativeTab(CreativeTabs.tabTools).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
+        
         GameRegistry.registerBlock(tobaccoBlock, tobaccoBlock.getUnlocalizedName());
         GameRegistry.registerItem(tobaccoSeed, tobaccoSeed.getUnlocalizedName());
         MinecraftForge.addGrassSeed(new ItemStack(tobaccoSeed), 8);
         GameRegistry.registerItem(tobaccoCrop, tobaccoCrop.getUnlocalizedName());
         GameRegistry.registerItem(tobacco, tobacco.getUnlocalizedName());
+        //GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
         
         crafting();
     }
@@ -92,11 +92,17 @@ public class Plant {
         
     }
     
-    public static void crafting()
+    private static void crafting()
     {
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string), new ItemStack(cottonCrop)); //producing string
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), new ItemStack(Blocks.wool));
+        
         GameRegistry.addShapelessRecipe(new ItemStack(tobaccoSeed, 3), new ItemStack(tobaccoCrop));
         GameRegistry.addSmelting(new ItemStack(tobaccoCrop), new ItemStack(tobacco), 5); //producing tobacco
+        /*GameRegistry.addRecipe(new ItemStack(pipe),
+                "x y",
+                "xy ",
+                'x', new ItemStack(Blocks.planks),
+                'y', new ItemStack(Items.stick));*/
     }
 }

@@ -3,7 +3,10 @@ item.cotton_seed.name=Cotton Seeds
 item.cotton_crop.name=Cotton
 
 #tobacco
-tile.tobacco_grass=Wild Tobacco
 item.tobacco_seed.name=Tobacco Seeds
 item.tobacco_crop.name=Tobacco Leaf
 item.tobacco.name=Tobacco
+item.pipe.name=Pipe
+
+#food
+item.cheese.name=Cheese

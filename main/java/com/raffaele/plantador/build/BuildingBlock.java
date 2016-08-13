@@ -14,16 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador;
+package com.raffaele.plantador.build;
+
+import com.raffaele.plantador.Info;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class Info {
-    public static final String ID = "plantador";
-    public static final String NAME = "Plantador";
-    public static final String VERSION = "0.1";
-    public static final String MINECRAFT = "1.7.10";
+public class BuildingBlock extends Block{
+    public BuildingBlock(String name)
+    {
+        super(Material.rock);
+        this.setBlockName(name);
+        this.setBlockTextureName(Info.ID + ":build/" + name);
+        this.setHardness(1.5F);this.setResistance(10F);
+        this.setHarvestLevel("pickaxe", 0);
+        this.setCreativeTab(CreativeTabs.tabBlock);
+    }
     
 }
