@@ -10,3 +10,14 @@ item.pipe.name=Pipe
 
 #food
 item.cheese.name=Cheese
+item.ham.name=Ham
+
+#buildings
+tile.clay_tiles.name=Clay Tiles
+tile.clay_tiles_stairs.name=Clay Tiles Stairs
+tile.marble.name=Marble
+tile.marble_brick.name=Marble Brick
+tile.marble_pillar.name=Pillar
+tile.doric.name=Doric Capital
+tile.ionic.name=Ionic Capital
+tile.corinthian.name=Corinthian Capital

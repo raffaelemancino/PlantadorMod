@@ -31,13 +31,17 @@ import net.minecraft.item.ItemStack;
 public class Food {
     
     public static Item cheese;
+    public static Item ham;
     
     public static void preInit()
     {
         cheese = new ItemFood(8, 0.6F, false);
         cheese.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("cheese").setTextureName(Info.ID + ":food/cheese");
+        ham = new ItemFood(4, 0.8F, true);
+        ham.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("ham").setTextureName(Info.ID + ":food/ham");
         
         GameRegistry.registerItem(cheese, cheese.getUnlocalizedName());
+        GameRegistry.registerItem(ham, ham.getUnlocalizedName());
         
         crafting();
     }
@@ -52,6 +56,7 @@ public class Food {
         GameRegistry.addShapedRecipe(new ItemStack(cheese),
                 "xxx",
                 'x', new ItemStack(Items.milk_bucket.setContainerItem(Items.bucket)));
+        GameRegistry.addShapelessRecipe(new ItemStack(ham, 3),new ItemStack(Items.porkchop));
     }
     
 }
