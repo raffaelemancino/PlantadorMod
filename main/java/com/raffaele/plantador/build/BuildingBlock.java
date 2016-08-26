@@ -30,8 +30,8 @@ public class BuildingBlock extends Block{
     {
         super(Material.rock);
         this.setBlockName(name);
-        this.setBlockTextureName(Info.ID + ":build/" + name);
-        this.setHardness(1.5F);this.setResistance(10F);
+        this.setHardness(1.5F);
+        this.setResistance(10F);
         this.setHarvestLevel("pickaxe", 0);
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
