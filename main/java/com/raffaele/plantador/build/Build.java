@@ -19,6 +19,9 @@ package com.raffaele.plantador.build;
 import com.raffaele.plantador.Info;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
+import net.minecraft.block.BlockStoneSlab;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -27,18 +30,21 @@ import net.minecraft.item.ItemStack;
  *
  * @author Raffaele Francesco Mancino
  */
-public class Build {
+public class Build
+{
     
     public static Block clay_tiles;
     public static Block clay_tiles_stairs;
     public static Block marble;
     public static Block marble_brick;
-    public static Block marble_pillar;
-    public static Block marble_doric_capital;
-    public static Block marble_ionic_capital;
-    public static Block marble_corinthian_capital;
+    public static Block marble_slab;
+    public static Block marble_stairs;
+    public static Block marble_doric;
+    public static Block marble_ionic;
+    public static Block marble_corinthian;
     
-    
+    public static Block table;
+        
     public static void preInit()
     {
         clay_tiles = new BuildingBlock("clay_tiles").setBlockTextureName(Info.ID + ":build/" + "clay_tiles");
@@ -46,20 +52,28 @@ public class Build {
         
         marble = new BuildingBlock("marble").setBlockTextureName(Info.ID + ":build/marble/" + "marble");
         marble_brick = new BuildingBlock("marble_brick").setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick");
-        marble_pillar = new BuildingPillar("marble_pillar").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
-        marble_doric_capital = new BuildingPillar("doric").setBlockTextureName(Info.ID + ":build/marble/" + "doric");
-        marble_ionic_capital = new BuildingPillar("ionic").setBlockTextureName(Info.ID + ":build/marble/" + "ionic");
-        marble_corinthian_capital = new BuildingPillar("corinthian").setBlockTextureName(Info.ID + ":build/marble/" + "corinthian");
+        marble_slab = new BuildingSlab(Material.rock, "marble_slab", false).setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick");
+        marble_stairs = new BuildingStairs(marble_brick, "marble_stairs");
+        
+        marble_doric = new BuildingPillar("marble_doric", "doric").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
+        marble_ionic = new BuildingPillar("marble_ionic", "ionic").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
+        marble_corinthian = new BuildingPillar("marble_corinthian", "corinthian").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
+        
+        table = new CraftingTable("table", 1).setBlockTextureName(Info.ID + ":build/" + "table");
         
         GameRegistry.registerBlock(clay_tiles, clay_tiles.getUnlocalizedName());
         GameRegistry.registerBlock(clay_tiles_stairs, clay_tiles_stairs.getUnlocalizedName());
         
         GameRegistry.registerBlock(marble, marble.getUnlocalizedName());
         GameRegistry.registerBlock(marble_brick, marble_brick.getUnlocalizedName());
-        GameRegistry.registerBlock(marble_pillar, marble_pillar.getUnlocalizedName());
-        GameRegistry.registerBlock(marble_doric_capital, marble_doric_capital.getUnlocalizedName());
-        GameRegistry.registerBlock(marble_ionic_capital, marble_ionic_capital.getUnlocalizedName());
-        GameRegistry.registerBlock(marble_corinthian_capital, marble_corinthian_capital.getUnlocalizedName());
+        GameRegistry.registerBlock(marble_slab, marble_slab.getUnlocalizedName());
+        GameRegistry.registerBlock(marble_stairs, marble_stairs.getUnlocalizedName());
+        
+        GameRegistry.registerBlock(marble_doric, marble_doric.getUnlocalizedName());
+        GameRegistry.registerBlock(marble_ionic, marble_ionic.getUnlocalizedName());
+        GameRegistry.registerBlock(marble_corinthian, marble_corinthian.getUnlocalizedName());
+        
+        GameRegistry.registerBlock(table, table.getUnlocalizedName());
         
         crafting();
     }
@@ -92,29 +106,10 @@ public class Build {
                 "xx",
                 "xx",
                 'x', new ItemStack(marble));
-        GameRegistry.addRecipe(new ItemStack(marble_pillar, 3),
-                "x",
-                "x",
-                "x",
-                'x', new ItemStack(marble));
-        GameRegistry.addRecipe(new ItemStack(marble_doric_capital),
-                "   ",
-                " xy",
-                "   ",
-                'x', new ItemStack(marble_pillar),
-                'y', new ItemStack(Items.iron_pickaxe.setContainerItem(Items.iron_pickaxe)));
-        GameRegistry.addRecipe(new ItemStack(marble_ionic_capital),
-                "   ",
-                " x ",
-                " y ",
-                'x', new ItemStack(marble_pillar),
-                'y', new ItemStack(Items.iron_pickaxe.setContainerItem(Items.iron_pickaxe)));
-        GameRegistry.addRecipe(new ItemStack(marble_corinthian_capital),
-                " y ",
-                " x ",
-                "   ",
-                'y', new ItemStack(Items.iron_pickaxe.setContainerItem(Items.iron_pickaxe)),
-                'x', new ItemStack(marble_pillar));
-        
+        GameRegistry.addRecipe(new ItemStack(marble_stairs, 4),
+                "x  ",
+                "xx ",
+                "xxx",
+                'x', new ItemStack(marble_brick));        
     }
 }

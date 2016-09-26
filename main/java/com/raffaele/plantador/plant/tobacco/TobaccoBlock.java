@@ -40,7 +40,7 @@ public class TobaccoBlock extends BlockCrops {
     {
         return Plant.tobaccoSeed;
     }
-   
+    
     /**
      * crop
      * @return
@@ -93,25 +93,5 @@ public class TobaccoBlock extends BlockCrops {
     public boolean canBlockStay(World world, int x, int y, int z)
     {
         return world.getBlock(x, y - 1, z) == Blocks.farmland;
-    }
-    
-    @Override
-    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
-    {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        ret.add(new ItemStack(this.func_149865_P(), 1, 0));
-
-        if (metadata >= 7)
-        {
-            for (int i = 0; i < 1 + fortune; ++i)
-            {
-                if (world.rand.nextInt(15) <= metadata)
-                {
-                    ret.add(new ItemStack(this.func_149865_P(), 1, 0));
-                }
-            }
-        }
-
-        return ret;
     }
 }

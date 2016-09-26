@@ -25,7 +25,8 @@ import net.minecraft.creativetab.CreativeTabs;
  *
  * @author Raffaele Francesco Mancino
  */
-public class BuildingBlock extends Block{
+public class BuildingBlock extends Block
+{
     public BuildingBlock(String name)
     {
         super(Material.rock);

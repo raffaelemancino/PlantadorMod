@@ -20,12 +20,14 @@ import com.raffaele.plantador.Info;
 import com.raffaele.plantador.plant.cotton.CottonBlock;
 import com.raffaele.plantador.plant.tobacco.TobaccoBlock;
 import com.raffaele.plantador.plant.tobacco.Pipe;
+import com.raffaele.plantador.plant.wine.WineBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -45,6 +47,10 @@ public class Plant {
     public static Item tobaccoCrop;
     public static Item tobacco;
     //public static Item pipe;
+    
+    public static Block wineBlock;
+    public static Item wineSeed;
+    public static Item wineCrop;
     
     public static void preInit()
     {
@@ -76,13 +82,26 @@ public class Plant {
         
         //pipe = new Pipe();
         //pipe.setCreativeTab(CreativeTabs.tabTools).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
-        
+                
         GameRegistry.registerBlock(tobaccoBlock, tobaccoBlock.getUnlocalizedName());
         GameRegistry.registerItem(tobaccoSeed, tobaccoSeed.getUnlocalizedName());
         MinecraftForge.addGrassSeed(new ItemStack(tobaccoSeed), 8);
         GameRegistry.registerItem(tobaccoCrop, tobaccoCrop.getUnlocalizedName());
         GameRegistry.registerItem(tobacco, tobacco.getUnlocalizedName());
         //GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
+        
+        wineBlock = new WineBlock();
+        wineBlock.setBlockName("wine_block").setBlockTextureName(Info.ID + ":wine/wine");
+        
+        wineSeed = new ItemSeeds(wineBlock, Blocks.farmland);
+        wineSeed.setCreativeTab(CreativeTabs.tabMisc).setUnlocalizedName("wine_seed").setTextureName(Info.ID + ":wine/wine_seed");
+        
+        wineCrop = new ItemFood(4, 0.3F, false);
+        wineCrop.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("wine_crop").setTextureName(Info.ID + ":wine/wine_crop");
+        
+        GameRegistry.registerBlock(wineBlock, wineBlock.getUnlocalizedName());
+        GameRegistry.registerItem(wineSeed, wineSeed.getUnlocalizedName());
+        GameRegistry.registerItem(wineCrop, wineCrop.getUnlocalizedName());
         
         crafting();
     }
@@ -97,12 +116,13 @@ public class Plant {
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string), new ItemStack(cottonCrop)); //producing string
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), new ItemStack(Blocks.wool));
         
-        GameRegistry.addShapelessRecipe(new ItemStack(tobaccoSeed, 3), new ItemStack(tobaccoCrop));
         GameRegistry.addSmelting(new ItemStack(tobaccoCrop), new ItemStack(tobacco), 5); //producing tobacco
         /*GameRegistry.addRecipe(new ItemStack(pipe),
                 "x y",
                 "xy ",
                 'x', new ItemStack(Blocks.planks),
                 'y', new ItemStack(Items.stick));*/
+        
+        GameRegistry.addShapelessRecipe(new ItemStack(wineSeed, 3), new ItemStack(wineCrop));
     }
 }

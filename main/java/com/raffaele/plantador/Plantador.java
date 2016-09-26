@@ -21,6 +21,7 @@ import com.raffaele.plantador.build.Build;
 import com.raffaele.plantador.food.Food;
 
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -29,10 +30,19 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = Info.ID, name = Info.NAME, acceptedMinecraftVersions = Info.MINECRAFT, version = Info.VERSION)
 public class Plantador
 {
+    /*
+    @Instance("plantador")
+    public static Plantador instance;
+    */
+    
+    @Instance
+    public static Plantador instance = new Plantador();
+    
+    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        System.out.println("Mod PreInit");
+        System.out.println("++++++++++MOD PREINIT++++++++++");
         Plant.preInit();
         Build.preInit();
         Food.preInit();
@@ -41,7 +51,7 @@ public class Plantador
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-        System.out.println("Mod Init");
+        System.out.println("++++++++++MOD INIT++++++++++");
         Plant.init();
         Build.init();
         Food.init();
@@ -50,6 +60,6 @@ public class Plantador
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        System.out.println("Mod PostInit");
+        System.out.println("++++++++++MOD POSTINIT++++++++++");
     }
 }
