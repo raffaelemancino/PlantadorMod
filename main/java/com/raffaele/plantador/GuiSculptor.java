@@ -16,14 +16,24 @@
  */
 package com.raffaele.plantador;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.world.World;
+import org.lwjgl.opengl.GL11;
+
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class Info {
-    public static final String ID = "plantador";
-    public static final String NAME = "Plantador";
-    public static final String VERSION = "0.5";
-    public static final String MINECRAFT = "1.7.10";
+public class GuiSculptor extends GuiContainer{
+
+    public GuiSculptor(InventoryPlayer inventory, World world, int x, int y, int z) {
+        super(new ContainerSculptor(inventory, world, x, y, z));
+    }
+
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
+    {
+    }
     
 }

@@ -26,6 +26,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Info.ID, name = Info.NAME, acceptedMinecraftVersions = Info.MINECRAFT, version = Info.VERSION)
 public class Plantador
@@ -43,6 +44,7 @@ public class Plantador
     public void preInit(FMLPreInitializationEvent event)
     {
         System.out.println("++++++++++MOD PREINIT++++++++++");
+        NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GuiHandler());
         Plant.preInit();
         Build.preInit();
         Food.preInit();

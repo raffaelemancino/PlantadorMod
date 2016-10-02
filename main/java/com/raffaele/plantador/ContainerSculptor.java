@@ -16,14 +16,28 @@
  */
 package com.raffaele.plantador;
 
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.ContainerWorkbench;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.world.World;
+
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class Info {
-    public static final String ID = "plantador";
-    public static final String NAME = "Plantador";
-    public static final String VERSION = "0.5";
-    public static final String MINECRAFT = "1.7.10";
-    
+public class ContainerSculptor extends ContainerWorkbench
+{
+    private World world;
+    public ContainerSculptor(InventoryPlayer player, World world, int x, int y, int z)
+    {
+        super(player, world, x, y, z);
+        this.world = world;
+    }
+
+    @Override
+    public void onCraftMatrixChanged(IInventory inventory)
+    {
+        craftResult.setInventorySlotContents(0, CraftingManagerSculptor.instance.findMatchingRecipe(craftMatrix, this.world));
+    }
 }

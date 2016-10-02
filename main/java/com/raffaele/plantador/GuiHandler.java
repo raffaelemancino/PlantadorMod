@@ -16,14 +16,30 @@
  */
 package com.raffaele.plantador;
 
+import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class Info {
-    public static final String ID = "plantador";
-    public static final String NAME = "Plantador";
-    public static final String VERSION = "0.5";
-    public static final String MINECRAFT = "1.7.10";
+public class GuiHandler implements IGuiHandler{
+
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+    {        
+        /*if (ID == 1)
+            return new ContainerSculptor(player.inventory, world, x, y, z);*/
+        return null;
+    }
+
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+    {
+        if (ID == 1)
+            return new GuiSculptor(player.inventory, world, x, y, z);
+        return null;
+    }
     
 }
