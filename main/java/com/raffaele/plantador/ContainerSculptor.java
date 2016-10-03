@@ -16,9 +16,18 @@
  */
 package com.raffaele.plantador;
 
+import java.sql.DriverManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
@@ -26,18 +35,148 @@ import net.minecraft.world.World;
  *
  * @author Raffaele Francesco Mancino
  */
-public class ContainerSculptor extends ContainerWorkbench
+public class ContainerSculptor extends Container
 {
-    private World world;
-    public ContainerSculptor(InventoryPlayer player, World world, int x, int y, int z)
+    public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public IInventory craftResult = new InventoryCraftResult();
+    private World worldObj;
+    private int posX;
+    private int posY;
+    private int posZ;
+    
+    public ContainerSculptor(InventoryPlayer inventory, World world, int x, int y, int z)
     {
-        super(player, world, x, y, z);
-        this.world = world;
+        this.worldObj = world;
+        this.posX = x;
+        this.posY = y;
+        this.posZ = z;
+        this.addSlotToContainer(new SlotCrafting(inventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        int l;
+        int i1;
+
+        for (l = 0; l < 3; ++l)
+        {
+            for (i1 = 0; i1 < 3; ++i1)
+            {
+                this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 30 + i1 * 18, 17 + l * 18));
+            }
+        }
+
+        for (l = 0; l < 3; ++l)
+        {
+            for (i1 = 0; i1 < 9; ++i1)
+            {
+                this.addSlotToContainer(new Slot(inventory, i1 + l * 9 + 9, 8 + i1 * 18, 84 + l * 18));
+            }
+        }
+
+        for (l = 0; l < 9; ++l)
+        {
+            this.addSlotToContainer(new Slot(inventory, l, 8 + l * 18, 142));
+        }
+
+        this.onCraftMatrixChanged(this.craftMatrix);
     }
 
     @Override
     public void onCraftMatrixChanged(IInventory inventory)
     {
-        craftResult.setInventorySlotContents(0, CraftingManagerSculptor.instance.findMatchingRecipe(craftMatrix, this.world));
+        this.craftResult.setInventorySlotContents(0, CraftingManagerSculptor.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+    }
+    
+    @Override
+    public void onContainerClosed(EntityPlayer player)
+    {
+        super.onContainerClosed(player);
+
+        if (!this.worldObj.isRemote)
+        {
+            for (int i = 0; i < 9; ++i)
+            {
+                ItemStack itemstack = this.craftMatrix.getStackInSlotOnClosing(i);
+
+                if (itemstack != null)
+                {
+                    player.dropPlayerItemWithRandomChoice(itemstack, false);
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean canInteractWith(EntityPlayer p_75145_1_) {
+        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Blocks.crafting_table ? false : p_75145_1_.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+    }
+    
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer player, int i)
+    {
+        ItemStack itemstack = null;
+        Slot slot = (Slot)this.inventorySlots.get(i);
+
+        if (slot != null && slot.getHasStack())
+        {
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+
+            if (i == 0)
+            {
+                if (!this.mergeItemStack(itemstack1, 10, 46, true))
+                {
+                    return null;
+                }
+
+                slot.onSlotChange(itemstack1, itemstack);
+            }
+            else if (i >= 10 && i < 37)
+            {
+                if (!this.mergeItemStack(itemstack1, 37, 46, false))
+                {
+                    return null;
+                }
+            }
+            else if (i >= 37 && i < 46)
+            {
+                if (!this.mergeItemStack(itemstack1, 10, 37, false))
+                {
+                    return null;
+                }
+            }
+            else if (!this.mergeItemStack(itemstack1, 10, 46, false))
+            {
+                return null;
+            }
+
+            if (itemstack1.stackSize == 0)
+            {
+                slot.putStack((ItemStack)null);
+            }
+            else
+            {
+                slot.onSlotChanged();
+            }
+
+            if (itemstack1.stackSize == itemstack.stackSize)
+            {
+                return null;
+            }
+
+            slot.onPickupFromSlot(player, itemstack1);
+        }
+
+        return itemstack;
+    }
+
+    @Override
+    public ItemStack slotClick(int a, int b, int c, EntityPlayer player) {
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        return super.slotClick(a, b, c, player);
+    }
+
+    @Override
+    protected void retrySlotClick(int a, int b, boolean c, EntityPlayer player) {
+        super.retrySlotClick(a, b, c, player); //To change body of generated methods, choose Tools | Templates.
     }
 }

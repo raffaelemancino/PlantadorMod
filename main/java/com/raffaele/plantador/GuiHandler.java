@@ -18,6 +18,7 @@ package com.raffaele.plantador;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.world.World;
 
 /**
@@ -29,15 +30,15 @@ public class GuiHandler implements IGuiHandler{
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {        
-        /*if (ID == 1)
-            return new ContainerSculptor(player.inventory, world, x, y, z);*/
+        if (ID == Plantador.TABLE_SCULPTOR)
+            return new ContainerSculptor(player.inventory, world, x, y, z);
         return null;
     }
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if (ID == 1)
+        if (ID == Plantador.TABLE_SCULPTOR)
             return new GuiSculptor(player.inventory, world, x, y, z);
         return null;
     }

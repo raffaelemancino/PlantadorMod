@@ -111,6 +111,11 @@ public class Plant {
         
     }
     
+    public static void postInit()
+    {
+        
+    }
+    
     private static void crafting()
     {
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string), new ItemStack(cottonCrop)); //producing string

@@ -16,12 +16,16 @@
  */
 package com.raffaele.plantador;
 
+import com.raffaele.plantador.build.Build;
 import java.util.ArrayList;
 import java.util.List;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
 
 /**
@@ -32,6 +36,15 @@ public class CraftingManagerSculptor
 {
     public static final CraftingManagerSculptor instance = new CraftingManagerSculptor();
     private List recipes = new ArrayList();
+
+    public static CraftingManagerSculptor getInstance() {
+        return instance;
+    }
+
+    public CraftingManagerSculptor()
+    {
+        this.addShapelessRecipe(new ItemStack(Build.table), new ItemStack(Blocks.bedrock));
+    }
     
     public ItemStack findMatchingRecipe(InventoryCrafting p_82787_1_, World p_82787_2_)
     {
@@ -89,5 +102,37 @@ public class CraftingManagerSculptor
 
             return null;
         }
+    }
+    
+    public void addShapelessRecipe(ItemStack p_77596_1_, Object ... p_77596_2_)
+    {
+        ArrayList arraylist = new ArrayList();
+        Object[] aobject = p_77596_2_;
+        int i = p_77596_2_.length;
+
+        for (int j = 0; j < i; ++j)
+        {
+            Object object1 = aobject[j];
+
+            if (object1 instanceof ItemStack)
+            {
+                arraylist.add(((ItemStack)object1).copy());
+            }
+            else if (object1 instanceof Item)
+            {
+                arraylist.add(new ItemStack((Item)object1));
+            }
+            else
+            {
+                if (!(object1 instanceof Block))
+                {
+                    throw new RuntimeException("Invalid shapeless recipy!");
+                }
+
+                arraylist.add(new ItemStack((Block)object1));
+            }
+        }
+
+        this.recipes.add(new ShapelessRecipes(p_77596_1_, arraylist));
     }
 }

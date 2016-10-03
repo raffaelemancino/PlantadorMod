@@ -18,6 +18,8 @@ package com.raffaele.plantador;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
@@ -27,13 +29,34 @@ import org.lwjgl.opengl.GL11;
  */
 public class GuiSculptor extends GuiContainer{
 
+    private ResourceLocation texture = new ResourceLocation(Info.ID + ":textures/gui/" + "gui_table.png");
+    
     public GuiSculptor(InventoryPlayer inventory, World world, int x, int y, int z) {
         super(new ContainerSculptor(inventory, world, x, y, z));
+        
+        this.xSize = 176;
+        this.ySize = 166;
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
-    {
+    public void onGuiClosed() {
+        super.onGuiClosed();
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
+        this.fontRendererObj.drawString(StatCollector.translateToLocal("Sculptor"), 28, 6, 0xFFFFFF);
     }
     
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
+    {
+        GL11.glColor4f(1F, 1F, 1F, 1F);
+		
+        //Minecraft.getMinecraft().getTextureManager().bindTexture(this.texture);
+        this.mc.getTextureManager().bindTexture(this.texture);
+	int k = (this.width - this.xSize) / 2;
+        int l = (this.height - this.ySize) / 2;
+	drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+    }
 }

@@ -51,6 +51,11 @@ public class Food {
         
     }
     
+    public static void postInit()
+    {
+        
+    }
+    
     public static void crafting()
     {
         GameRegistry.addShapedRecipe(new ItemStack(cheese),

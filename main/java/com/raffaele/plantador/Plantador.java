@@ -31,20 +31,18 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 @Mod(modid = Info.ID, name = Info.NAME, acceptedMinecraftVersions = Info.MINECRAFT, version = Info.VERSION)
 public class Plantador
 {
-    /*
-    @Instance("plantador")
+    public static int TABLE_SCULPTOR = 1;
+    
+    /*@Instance
+    public static Plantador instance = new Plantador();*/
+    
+    @Instance(Info.ID)
     public static Plantador instance;
-    */
-    
-    @Instance
-    public static Plantador instance = new Plantador();
-    
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         System.out.println("++++++++++MOD PREINIT++++++++++");
-        NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GuiHandler());
         Plant.preInit();
         Build.preInit();
         Food.preInit();
@@ -54,6 +52,7 @@ public class Plantador
     public void init(FMLInitializationEvent event)
     {
         System.out.println("++++++++++MOD INIT++++++++++");
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         Plant.init();
         Build.init();
         Food.init();
@@ -63,5 +62,8 @@ public class Plantador
     public void postInit(FMLPostInitializationEvent event)
     {
         System.out.println("++++++++++MOD POSTINIT++++++++++");
+        Plant.postInit();
+        Build.postInit();
+        Food.postInit();
     }
 }

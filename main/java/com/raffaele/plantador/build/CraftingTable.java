@@ -37,7 +37,7 @@ import net.minecraft.inventory.ContainerWorkbench;
 class CraftingTable extends Block
 {
     private IIcon icons[] = new IIcon[3];
-    private int guiID;
+    public int guiID;
     
     public CraftingTable(String name, int id)
     {
@@ -81,7 +81,9 @@ class CraftingTable extends Block
         {
             //player.displayGUIWorkbench(x, y, z);
             player.openGui(Plantador.instance, guiID, world, x, y, z);
+            return true;
+        }else{
+            return false;
         }
-        return true;
     }
 }
