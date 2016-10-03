@@ -8,6 +8,10 @@ item.tobacco_crop.name=Tobacco Leaf
 item.tobacco.name=Tobacco
 item.pipe.name=Pipe
 
+#wine
+item.wine_seed.name=Grapes Seed
+item.wine_crop.name=Grapes
+
 #food
 item.cheese.name=Cheese
 item.ham.name=Ham

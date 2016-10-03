@@ -19,8 +19,6 @@ package com.raffaele.plantador.build;
 import com.raffaele.plantador.Info;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSlab;
-import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -42,8 +40,6 @@ public class Build
     public static Block marble_doric;
     public static Block marble_ionic;
     public static Block marble_corinthian;
-    
-    public static Block table;
         
     public static void preInit()
     {
@@ -59,8 +55,6 @@ public class Build
         marble_ionic = new BuildingPillar("marble_ionic", "ionic").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
         marble_corinthian = new BuildingPillar("marble_corinthian", "corinthian").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
         
-        table = new CraftingTable("table", 1).setBlockTextureName(Info.ID + ":build/" + "table");
-        
         GameRegistry.registerBlock(clay_tiles, clay_tiles.getUnlocalizedName());
         GameRegistry.registerBlock(clay_tiles_stairs, clay_tiles_stairs.getUnlocalizedName());
         
@@ -72,9 +66,7 @@ public class Build
         GameRegistry.registerBlock(marble_doric, marble_doric.getUnlocalizedName());
         GameRegistry.registerBlock(marble_ionic, marble_ionic.getUnlocalizedName());
         GameRegistry.registerBlock(marble_corinthian, marble_corinthian.getUnlocalizedName());
-        
-        GameRegistry.registerBlock(table, table.getUnlocalizedName());
-        
+       
         crafting();
     }
     

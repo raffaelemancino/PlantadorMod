@@ -115,18 +115,11 @@ public class WineBlock extends BlockCrops
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-
-        if (metadata == 8)
+        if (metadata>=8)
         {
-            for (int i = 0; i < 2 + fortune; ++i)
-            {
-                if (world.rand.nextInt(15) <= metadata)
-                {
-                    ret.add(new ItemStack(this.func_149865_P(), 2, 0));
-                }
-            }
+            ret.add(new ItemStack(this.func_149865_P(),3));
         }else{
-            ret.add(new ItemStack(this.func_149866_i(), 1, 0));
+            ret.add(new ItemStack(this.func_149866_i()));
         }
 
         return ret;
