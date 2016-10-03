@@ -17,11 +17,13 @@
 package com.raffaele.plantador.food;
 
 import com.raffaele.plantador.Info;
+import com.raffaele.plantador.plant.Plant;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSoup;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -32,6 +34,7 @@ public class Food {
     
     public static Item cheese;
     public static Item ham;
+    public static Item chicory_stew;
     
     public static void preInit()
     {
@@ -39,9 +42,12 @@ public class Food {
         cheese.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("cheese").setTextureName(Info.ID + ":food/cheese");
         ham = new ItemFood(4, 0.8F, true);
         ham.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("ham").setTextureName(Info.ID + ":food/ham");
+        chicory_stew = new ItemSoup(6);
+        chicory_stew.setUnlocalizedName("chicory_stew").setTextureName(Info.ID + ":food/chicory_stew").setCreativeTab(CreativeTabs.tabFood);
         
         GameRegistry.registerItem(cheese, cheese.getUnlocalizedName());
         GameRegistry.registerItem(ham, ham.getUnlocalizedName());
+        GameRegistry.registerItem(chicory_stew, chicory_stew.getUnlocalizedName());
         
         crafting();
     }
@@ -57,6 +63,11 @@ public class Food {
                 "xxx",
                 'x', new ItemStack(Items.milk_bucket.setContainerItem(Items.bucket)));
         GameRegistry.addShapelessRecipe(new ItemStack(ham, 3),new ItemStack(Items.porkchop));
+        GameRegistry.addRecipe(new ItemStack(chicory_stew), 
+                "xx",
+                " y",
+                'x', new ItemStack(Plant.chicory),
+                'y', new ItemStack(Items.bowl));
     }
     
 }

@@ -38,6 +38,8 @@ import net.minecraftforge.common.MinecraftForge;
  */
 public class Plant {
     
+    public static Item chicory;
+    
     public static Block cottonBlock;
     public static Item cottonSeed;
     public static Item cottonCrop;
@@ -54,6 +56,12 @@ public class Plant {
     
     public static void preInit()
     {
+        chicory = new Item();
+        chicory.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("chicory").setTextureName(Info.ID + ":chicory");
+        
+        GameRegistry.registerItem(chicory, chicory.getUnlocalizedName());
+        MinecraftForge.addGrassSeed(new ItemStack(chicory), 12);
+        
         cottonBlock = new CottonBlock();
         cottonBlock.setBlockName("cotton_block").setBlockTextureName(Info.ID + ":cotton/cotton");
         
