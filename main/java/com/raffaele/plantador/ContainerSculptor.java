@@ -16,19 +16,16 @@
  */
 package com.raffaele.plantador;
 
-import java.sql.DriverManager;
+import com.raffaele.plantador.build.Build;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
 /**
@@ -78,13 +75,11 @@ public class ContainerSculptor extends Container
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 
-    @Override
     public void onCraftMatrixChanged(IInventory inventory)
     {
         this.craftResult.setInventorySlotContents(0, CraftingManagerSculptor.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
     
-    @Override
     public void onContainerClosed(EntityPlayer player)
     {
         super.onContainerClosed(player);
@@ -103,12 +98,10 @@ public class ContainerSculptor extends Container
         }
     }
 
-    @Override
     public boolean canInteractWith(EntityPlayer p_75145_1_) {
-        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Blocks.crafting_table ? false : p_75145_1_.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Build.table ? false : p_75145_1_.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
     }
     
-    @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int i)
     {
         ItemStack itemstack = null;
@@ -167,16 +160,12 @@ public class ContainerSculptor extends Container
         return itemstack;
     }
 
-    @Override
-    public ItemStack slotClick(int a, int b, int c, EntityPlayer player) {
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
-        return super.slotClick(a, b, c, player);
+    public ItemStack slotClick(int slotID, int button, int flag, EntityPlayer player) {
+        return super.slotClick(slotID, button, flag, player);
     }
-
-    @Override
-    protected void retrySlotClick(int a, int b, boolean c, EntityPlayer player) {
-        super.retrySlotClick(a, b, c, player); //To change body of generated methods, choose Tools | Templates.
+    
+    public boolean func_94530_a(ItemStack stack, Slot slot)
+    {
+        return slot.inventory != this.craftResult && super.func_94530_a(stack, slot);
     }
 }

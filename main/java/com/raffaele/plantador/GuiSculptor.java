@@ -45,7 +45,7 @@ public class GuiSculptor extends GuiContainer{
 
     @Override
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
-        this.fontRendererObj.drawString(StatCollector.translateToLocal("Sculptor"), 28, 6, 0xFFFFFF);
+        this.fontRendererObj.drawString(StatCollector.translateToLocal("Sculptor"), 28, 6, 4210752);
     }
     
     @Override
