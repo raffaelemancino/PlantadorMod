@@ -12,6 +12,11 @@ item.pipe.name=Pipe
 item.wine_seed.name=Grapes Seed
 item.wine_crop.name=Grapes
 
+#coffee
+item.coffee_seed.name=Coffee Seed
+item.coffee.name=Coffee
+item.coffee_cup.name=Coffee Cup
+
 #food
 item.cheese.name=Cheese
 item.ham.name=Ham
@@ -27,4 +32,8 @@ tile.marble_doric.name=Doric Pillar
 tile.marble_ionic.name=Ionic Pillar
 tile.marble_corinthian.name=Corinthian Pillar
 tile.marble_stairs.name=Marble Stairs
+tile.marble_slab.name=Marble Slab
 tile.table.name=Table
+
+#items
+item.cup.name=Cup

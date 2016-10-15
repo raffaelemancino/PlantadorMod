@@ -19,6 +19,7 @@ package com.raffaele.plantador;
 import com.raffaele.plantador.plant.Plant;
 import com.raffaele.plantador.build.Build;
 import com.raffaele.plantador.food.Food;
+import com.raffaele.plantador.items.PlantadorItems;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
@@ -46,6 +47,7 @@ public class Plantador
         Plant.preInit();
         Build.preInit();
         Food.preInit();
+        PlantadorItems.preInit();
     }
     
     @EventHandler
@@ -55,6 +57,7 @@ public class Plantador
         Plant.init();
         Build.init();
         Food.init();
+        PlantadorItems.init();
     }
     
     @EventHandler

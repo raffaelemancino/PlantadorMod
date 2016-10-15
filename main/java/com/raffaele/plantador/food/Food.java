@@ -17,6 +17,7 @@
 package com.raffaele.plantador.food;
 
 import com.raffaele.plantador.Info;
+import com.raffaele.plantador.items.PlantadorItems;
 import com.raffaele.plantador.plant.Plant;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
@@ -35,6 +36,7 @@ public class Food {
     public static Item cheese;
     public static Item ham;
     public static Item chicory_stew;
+    public static Item coffee_cup;
     
     public static void preInit()
     {
@@ -44,10 +46,13 @@ public class Food {
         ham.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("ham").setTextureName(Info.ID + ":food/ham");
         chicory_stew = new ItemSoup(6);
         chicory_stew.setUnlocalizedName("chicory_stew").setTextureName(Info.ID + ":food/chicory_stew").setCreativeTab(CreativeTabs.tabFood);
+        coffee_cup = new Coffee();
+        coffee_cup.setUnlocalizedName("coffee_cup").setTextureName(Info.ID + ":coffee/coffee_cup").setCreativeTab(CreativeTabs.tabFood);
         
         GameRegistry.registerItem(cheese, cheese.getUnlocalizedName());
         GameRegistry.registerItem(ham, ham.getUnlocalizedName());
         GameRegistry.registerItem(chicory_stew, chicory_stew.getUnlocalizedName());
+        GameRegistry.registerItem(coffee_cup, coffee_cup.getUnlocalizedName());
         
         crafting();
     }

@@ -14,9 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.plant.wine;
+package com.raffaele.plantador.plant.coffee;
 
-import com.raffaele.plantador.plant.Plant;
 import com.raffaele.plantador.plant.Plant;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,7 +25,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -36,17 +34,17 @@ import net.minecraft.world.World;
  *
  * @author Raffaele Francesco Mancino
  */
-public class WineBlock extends BlockCrops
+public class CoffeeBlock extends BlockCrops
 {
     
     private IIcon[] level;
     
-    public WineBlock()
+    public CoffeeBlock()
     {
         float f = 0.375F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
     }
-
+    
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
         Block underBlock = world.getBlock(x, y - 1, z);
@@ -80,7 +78,7 @@ public class WineBlock extends BlockCrops
                 {
                     ;
                 }
-                if (h<3 && meta>=7)
+                if (h<2 && meta>=7)
                 {
                     if (rand.nextInt(15)==0)
                     {
@@ -131,12 +129,12 @@ public class WineBlock extends BlockCrops
     @Override
     protected Item func_149866_i()
     {
-        return Plant.wineSeed;
+        return Plant.coffeeSeed;
     }
     
     @Override
     protected Item func_149865_P()
     {
-        return Plant.wineCrop;
+        return Plant.coffeeSeed;
     }
 }
