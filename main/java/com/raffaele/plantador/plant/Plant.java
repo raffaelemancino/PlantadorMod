@@ -20,6 +20,7 @@ import com.raffaele.plantador.Info;
 import com.raffaele.plantador.plant.cotton.CottonBlock;
 import com.raffaele.plantador.plant.tobacco.TobaccoBlock;
 import com.raffaele.plantador.plant.tobacco.Pipe;
+import com.raffaele.plantador.plant.tobacco.PipeRender;
 import com.raffaele.plantador.plant.wine.WineBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -30,6 +31,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
 /**
@@ -48,7 +50,7 @@ public class Plant {
     public static Item tobaccoSeed;
     public static Item tobaccoCrop;
     public static Item tobacco;
-    //public static Item pipe;
+    public static Item pipe;
     
     public static Block wineBlock;
     public static Item wineSeed;
@@ -88,15 +90,16 @@ public class Plant {
         tobacco = new Item();
         tobacco.setCreativeTab(CreativeTabs.tabMisc).setUnlocalizedName("tobacco").setTextureName(Info.ID + ":tobacco/tobacco");
         
-        //pipe = new Pipe();
-        //pipe.setCreativeTab(CreativeTabs.tabTools).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
+        pipe = new Pipe();
+        pipe.setCreativeTab(CreativeTabs.tabTools).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
                 
         GameRegistry.registerBlock(tobaccoBlock, tobaccoBlock.getUnlocalizedName());
         GameRegistry.registerItem(tobaccoSeed, tobaccoSeed.getUnlocalizedName());
         MinecraftForge.addGrassSeed(new ItemStack(tobaccoSeed), 8);
         GameRegistry.registerItem(tobaccoCrop, tobaccoCrop.getUnlocalizedName());
         GameRegistry.registerItem(tobacco, tobacco.getUnlocalizedName());
-        //GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
+        GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
+        MinecraftForgeClient.registerItemRenderer(pipe, new PipeRender());
         
         wineBlock = new WineBlock();
         wineBlock.setBlockName("wine_block").setBlockTextureName(Info.ID + ":wine/wine");
