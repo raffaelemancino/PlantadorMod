@@ -102,7 +102,6 @@ public class Plant {
         GameRegistry.registerItem(tobaccoCrop, tobaccoCrop.getUnlocalizedName());
         GameRegistry.registerItem(tobacco, tobacco.getUnlocalizedName());
         GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
-        MinecraftForgeClient.registerItemRenderer(pipe, new PipeRender());
         
         wineBlock = new WineBlock();
         wineBlock.setBlockName("wine_block").setBlockTextureName(Info.ID + ":wine/wine");
