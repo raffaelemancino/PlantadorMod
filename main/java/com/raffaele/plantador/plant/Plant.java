@@ -21,7 +21,6 @@ import com.raffaele.plantador.Info;
 import com.raffaele.plantador.plant.coffee.CoffeeBlock;
 import com.raffaele.plantador.plant.cotton.CottonBlock;
 import com.raffaele.plantador.plant.tobacco.TobaccoBlock;
-import com.raffaele.plantador.plant.tobacco.Pipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -49,7 +48,6 @@ public class Plant {
     public static Item tobaccoSeed;
     public static Item tobaccoCrop;
     public static Item tobacco;
-    //public static Item pipe;
     
     public static Block wineBlock;
     public static Item wineSeed;
@@ -78,7 +76,6 @@ public class Plant {
         
         GameRegistry.registerBlock(cottonBlock, cottonBlock.getUnlocalizedName());
         GameRegistry.registerItem(cottonSeed, cottonSeed.getUnlocalizedName());
-        MinecraftForge.addGrassSeed(new ItemStack(cottonSeed), 10);
         GameRegistry.registerItem(cottonCrop, cottonCrop.getUnlocalizedName());
 
         tobaccoBlock = new TobaccoBlock();
@@ -92,16 +89,11 @@ public class Plant {
         
         tobacco = new Item();
         tobacco.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("tobacco").setTextureName(Info.ID + ":tobacco/tobacco");
-        
-        //pipe = new Pipe();
-        //pipe.setCreativeTab(CreativeTabs.tabTools).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
                 
         GameRegistry.registerBlock(tobaccoBlock, tobaccoBlock.getUnlocalizedName());
         GameRegistry.registerItem(tobaccoSeed, tobaccoSeed.getUnlocalizedName());
-        MinecraftForge.addGrassSeed(new ItemStack(tobaccoSeed), 8);
         GameRegistry.registerItem(tobaccoCrop, tobaccoCrop.getUnlocalizedName());
         GameRegistry.registerItem(tobacco, tobacco.getUnlocalizedName());
-        //GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
         
         wineBlock = new WineBlock();
         wineBlock.setBlockName("wine_block").setBlockTextureName(Info.ID + ":wine/wine");
@@ -143,12 +135,7 @@ public class Plant {
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), new ItemStack(Blocks.wool));
         
         GameRegistry.addSmelting(new ItemStack(tobaccoCrop), new ItemStack(tobacco), 5); //producing tobacco
-        /*GameRegistry.addRecipe(new ItemStack(pipe),
-                "x y",
-                "xy ",
-                'x', new ItemStack(Blocks.planks),
-                'y', new ItemStack(Items.stick));*/
-        
+                
         GameRegistry.addShapelessRecipe(new ItemStack(wineSeed, 3), new ItemStack(wineCrop));
         GameRegistry.addSmelting(new ItemStack(coffeeSeed), new ItemStack(coffee), 5);
     }
