@@ -30,7 +30,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
 /**
@@ -144,8 +143,8 @@ public class Plant {
         
         GameRegistry.addSmelting(new ItemStack(tobaccoCrop), new ItemStack(tobacco), 5); //producing tobacco
         GameRegistry.addRecipe(new ItemStack(pipe),
-                "x y",
-                "xy ",
+                "x  ",
+                "xyy",
                 'x', new ItemStack(Blocks.planks),
                 'y', new ItemStack(Items.stick));
         
