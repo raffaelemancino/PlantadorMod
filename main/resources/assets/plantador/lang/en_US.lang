@@ -12,6 +12,9 @@ item.pipe.name=Pipe
 item.wine_seed.name=Grapes Seed
 item.wine_crop.name=Grapes
 
+#lettuce
+item.lettuce.name=Lattuce
+
 #food
 item.cheese.name=Cheese
 item.ham.name=Ham

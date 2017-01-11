@@ -40,12 +40,6 @@ public class WineBlock extends BlockCrops
     
     private IIcon[] level;
     
-    public WineBlock()
-    {
-        float f = 0.375F;
-        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
-    }
-
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
         Block underBlock = world.getBlock(x, y - 1, z);
