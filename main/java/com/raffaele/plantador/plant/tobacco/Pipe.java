@@ -56,7 +56,7 @@ public class Pipe extends Item {
     @Override
     public int getMaxItemUseDuration(ItemStack item)
     {
-        return 72000;
+        return 7200;
     }
     
     @Override
