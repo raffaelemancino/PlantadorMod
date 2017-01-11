@@ -19,7 +19,9 @@ package com.raffaele.plantador.items;
 import com.raffaele.plantador.Info;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /**
  *
@@ -28,13 +30,18 @@ import net.minecraft.item.Item;
 public class PlantadorItems
 {
     public static Item cup;
+    public static Item cup_raw;
     
    public static void preInit()
    {
        cup = new Item();
        cup.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("cup").setTextureName(Info.ID + ":cup");
        
+       cup_raw = new Item();
+       cup_raw.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("cup_raw").setTextureName(Info.ID + ":cup_raw");
+       
        GameRegistry.registerItem(cup, cup.getUnlocalizedName());
+       GameRegistry.registerItem(cup_raw, cup_raw.getUnlocalizedName());
    }
    
    public static void init()
@@ -49,6 +56,10 @@ public class PlantadorItems
    
    public static void crafting()
    {
-       
+       GameRegistry.addRecipe(new ItemStack(cup_raw),
+               "x x",
+               " x ",
+               'x', new ItemStack(Items.clay_ball));
+       GameRegistry.addSmelting(new ItemStack(cup_raw), new ItemStack(cup), 0);
    }
 }

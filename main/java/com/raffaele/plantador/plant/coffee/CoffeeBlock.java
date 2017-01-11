@@ -116,9 +116,7 @@ public class CoffeeBlock extends BlockCrops
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         if (metadata>=8)
         {
-            ret.add(new ItemStack(this.func_149865_P()));
-            ret.add(new ItemStack(this.func_149865_P()));
-            ret.add(new ItemStack(this.func_149865_P()));
+            ret.add(new ItemStack(this.func_149865_P(), 3));
         }else{
             ret.add(new ItemStack(this.func_149866_i()));
         }

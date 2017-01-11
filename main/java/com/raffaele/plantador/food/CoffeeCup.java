@@ -28,10 +28,10 @@ import net.minecraft.world.World;
  *
  * @author Raffaele Francesco Mancino
  */
-public class Coffee extends ItemFood
+public class CoffeeCup extends ItemFood
 {
 
-    public Coffee() {
+    public CoffeeCup() {
         super(2, false);
         setMaxStackSize(1);
     }
@@ -39,7 +39,7 @@ public class Coffee extends ItemFood
     @Override
     public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
         super.onEaten(item, world, player);
-        player.addPotionEffect(new PotionEffect(3, 500, 5, false));
+        player.addPotionEffect(new PotionEffect(3, 500, 2, false));
         //player.addPotionEffect(new PotionEffect(17, 500, 5, false));
         return new ItemStack(PlantadorItems.cup);
     }

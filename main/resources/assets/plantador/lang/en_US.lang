@@ -16,6 +16,8 @@ item.wine_crop.name=Grapes
 item.coffee_seed.name=Coffee Seed
 item.coffee.name=Coffee
 item.coffee_cup.name=Coffee Cup
+#lettuce
+item.lettuce.name=Lattuce
 
 #food
 item.cheese.name=Cheese

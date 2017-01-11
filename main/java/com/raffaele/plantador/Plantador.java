@@ -31,11 +31,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = Info.ID, name = Info.NAME, acceptedMinecraftVersions = Info.MINECRAFT, version = Info.VERSION)
 public class Plantador
 {
-    /*
-    @Instance("plantador")
-    public static Plantador instance;
-    */
-    
     @Instance
     public static Plantador instance = new Plantador();
     
@@ -43,6 +38,7 @@ public class Plantador
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+        System.err.println("Plantador version: " + Info.VERSION);
         System.out.println("++++++++++MOD PREINIT++++++++++");
         Plant.preInit();
         Build.preInit();
