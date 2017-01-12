@@ -18,6 +18,9 @@ item.coffee.name=Coffee
 item.coffee_cup.name=Coffee Cup
 item.cup_raw.name=Raw Cup
 
+#broadbean
+item.broadbean.name=Broad Bean
+
 #lettuce
 item.lettuce.name=Lattuce
 
@@ -26,6 +29,7 @@ item.cheese.name=Cheese
 item.ham.name=Ham
 item.chicory.name=Chicory
 item.chicory_stew.name=Chicory Stew
+item.chicorybroadbean_stew.name=Chicory and Broad Bean Stew
 
 #buildings
 tile.clay_tiles.name=Clay Tiles

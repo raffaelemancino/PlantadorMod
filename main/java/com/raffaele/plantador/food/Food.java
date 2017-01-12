@@ -36,6 +36,7 @@ public class Food {
     public static Item cheese;
     public static Item ham;
     public static Item chicory_stew;
+    public static Item chicorybroadbean_stew;
     public static Item coffee_cup;
     
     public static void preInit()
@@ -52,10 +53,14 @@ public class Food {
         coffee_cup = new CoffeeCup();
         coffee_cup.setUnlocalizedName("coffee_cup").setTextureName(Info.ID + ":food/coffee_cup").setCreativeTab(CreativeTabs.tabFood);
         
+        chicorybroadbean_stew = new ItemSoup(7);
+        chicorybroadbean_stew.setUnlocalizedName("chicorybroadbean_stew").setTextureName(Info.ID + ":food/chicory&broadbean_stew").setCreativeTab(CreativeTabs.tabFood);
+        
         GameRegistry.registerItem(cheese, cheese.getUnlocalizedName());
         GameRegistry.registerItem(ham, ham.getUnlocalizedName());
         GameRegistry.registerItem(chicory_stew, chicory_stew.getUnlocalizedName());
         GameRegistry.registerItem(coffee_cup, coffee_cup.getUnlocalizedName());
+        GameRegistry.registerItem(chicorybroadbean_stew, chicorybroadbean_stew.getUnlocalizedName());
     }
     
     public static void init()
@@ -71,7 +76,7 @@ public class Food {
         GameRegistry.addShapelessRecipe(new ItemStack(ham, 3),new ItemStack(Items.porkchop));
         GameRegistry.addRecipe(new ItemStack(chicory_stew), 
                 "xx",
-                "y",
+                " y",
                 'x', new ItemStack(Plant.chicory),
                 'y', new ItemStack(Items.bowl));
         GameRegistry.addRecipe(new ItemStack(coffee_cup),
@@ -79,6 +84,12 @@ public class Food {
                 "y",
                 'x', new ItemStack(Plant.coffee),
                 'y', new ItemStack(PlantadorItems.cup));
+        GameRegistry.addRecipe(new ItemStack(chicorybroadbean_stew),
+                "xy",
+                " z",
+                'x',new ItemStack(Plant.broadbean),
+                'y',new ItemStack(Plant.chicory),
+                'z',new ItemStack(Items.bowl));
     }
     
 }

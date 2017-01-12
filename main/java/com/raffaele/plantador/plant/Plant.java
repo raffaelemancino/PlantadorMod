@@ -18,6 +18,7 @@ package com.raffaele.plantador.plant;
 
 import com.raffaele.plantador.plant.wine.WineBlock;
 import com.raffaele.plantador.Info;
+import com.raffaele.plantador.plant.broadbean.BroadBeanBlock;
 import com.raffaele.plantador.plant.coffee.CoffeeBlock;
 import com.raffaele.plantador.plant.cotton.CottonBlock;
 import com.raffaele.plantador.plant.lettuce.LettuceBlock;
@@ -60,6 +61,9 @@ public class Plant {
     public static Block coffeeBlock;
     public static Item coffeeSeed;
     public static Item coffee;
+    
+    public static Block broadbeanBlock;
+    public static Item broadbean;
     
     public static Block lettuceBlock;
     public static Item lettuce;
@@ -132,6 +136,15 @@ public class Plant {
         GameRegistry.registerItem(coffeeSeed, coffeeSeed.getUnlocalizedName());
         GameRegistry.registerItem(coffee, coffee.getUnlocalizedName());
         
+        broadbeanBlock = new BroadBeanBlock();
+        broadbeanBlock.setBlockName("broadbean_block").setBlockTextureName(Info.ID + ":broadbean/broadbean");
+        
+        broadbean = new ItemSeeds(broadbeanBlock, Blocks.farmland);
+        broadbean.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("broadbean").setTextureName(Info.ID + ":broadbean/broadbean");
+        
+        GameRegistry.registerBlock(broadbeanBlock, broadbeanBlock.getUnlocalizedName());
+        GameRegistry.registerItem(broadbean, broadbean.getUnlocalizedName());
+        
         lettuceBlock = new LettuceBlock();
         lettuceBlock.setBlockName("lettuceBlock").setBlockTextureName(Info.ID + ":lettuce/lettuce");
         
@@ -140,13 +153,11 @@ public class Plant {
         
         GameRegistry.registerBlock(lettuceBlock, lettuceBlock.getUnlocalizedName());
         GameRegistry.registerItem(lettuce, lettuce.getUnlocalizedName());
-        
-        crafting();
     }
     
     public static void init()
     {
-        
+        crafting();
     }
     
     private static void crafting()
