@@ -27,6 +27,8 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 
 @Mod(modid = Info.ID, name = Info.NAME, acceptedMinecraftVersions = Info.MINECRAFT, version = Info.VERSION)
 public class Plantador
@@ -34,6 +36,14 @@ public class Plantador
     @Instance
     public static Plantador instance = new Plantador();
     
+    public static final CreativeTabs tabPlantador = new CreativeTabs("tabPlantador")
+    {
+        @Override
+        public Item getTabIconItem() {
+            return Plant.wineCrop;
+        }
+            
+    };
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
