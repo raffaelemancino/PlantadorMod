@@ -17,6 +17,7 @@
 package com.raffaele.plantador.build;
 
 import com.raffaele.plantador.Info;
+import com.raffaele.plantador.Plantador;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -43,17 +44,17 @@ public class Build
         
     public static void preInit()
     {
-        clay_tiles = new BuildingBlock("clay_tiles").setBlockTextureName(Info.ID + ":build/" + "clay_tiles");
-        clay_tiles_stairs = new BuildingStairs(clay_tiles, "clay_tiles_stairs");
+        clay_tiles = new BuildingBlock("clay_tiles").setBlockTextureName(Info.ID + ":build/" + "clay_tiles").setCreativeTab(Plantador.tabPlantador);
+        clay_tiles_stairs = new BuildingStairs(clay_tiles, "clay_tiles_stairs").setCreativeTab(Plantador.tabPlantador);
         
-        marble = new BuildingBlock("marble").setBlockTextureName(Info.ID + ":build/marble/" + "marble");
-        marble_brick = new BuildingBlock("marble_brick").setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick");
-        marble_slab = new BuildingSlab(Material.rock, "marble_slab", false).setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick");
-        marble_stairs = new BuildingStairs(marble_brick, "marble_stairs");
+        marble = new BuildingBlock("marble").setBlockTextureName(Info.ID + ":build/marble/" + "marble").setCreativeTab(Plantador.tabPlantador);
+        marble_brick = new BuildingBlock("marble_brick").setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick").setCreativeTab(Plantador.tabPlantador);
+        marble_slab = new BuildingSlab(Material.rock, "marble_slab", false).setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick").setCreativeTab(Plantador.tabPlantador);
+        marble_stairs = new BuildingStairs(marble_brick, "marble_stairs").setCreativeTab(Plantador.tabPlantador);
         
-        marble_doric = new BuildingPillar("marble_doric", "doric").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
-        marble_ionic = new BuildingPillar("marble_ionic", "ionic").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
-        marble_corinthian = new BuildingPillar("marble_corinthian", "corinthian").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar");
+        marble_doric = new BuildingPillar("marble_doric", "doric").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar").setCreativeTab(Plantador.tabPlantador);
+        marble_ionic = new BuildingPillar("marble_ionic", "ionic").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar").setCreativeTab(Plantador.tabPlantador);
+        marble_corinthian = new BuildingPillar("marble_corinthian", "corinthian").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar").setCreativeTab(Plantador.tabPlantador);
         
         GameRegistry.registerBlock(clay_tiles, clay_tiles.getUnlocalizedName());
         GameRegistry.registerBlock(clay_tiles_stairs, clay_tiles_stairs.getUnlocalizedName());

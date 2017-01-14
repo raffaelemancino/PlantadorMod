@@ -19,8 +19,8 @@ package com.raffaele.plantador.food;
 import com.raffaele.plantador.Info;
 import com.raffaele.plantador.items.PlantadorItems;
 import com.raffaele.plantador.plant.Plant;
+import com.raffaele.plantador.Plantador;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -42,19 +42,19 @@ public class Food {
     public static void preInit()
     {
         cheese = new ItemFood(8, 0.6F, false);
-        cheese.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("cheese").setTextureName(Info.ID + ":food/cheese");
+        cheese.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("cheese").setTextureName(Info.ID + ":food/cheese");
         
         ham = new ItemFood(4, 0.8F, true);
-        ham.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("ham").setTextureName(Info.ID + ":food/ham");
+        ham.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("ham").setTextureName(Info.ID + ":food/ham");
         
         chicory_stew = new ItemSoup(6);
-        chicory_stew.setUnlocalizedName("chicory_stew").setTextureName(Info.ID + ":food/chicory_stew").setCreativeTab(CreativeTabs.tabFood);
+        chicory_stew.setUnlocalizedName("chicory_stew").setTextureName(Info.ID + ":food/chicory_stew").setCreativeTab(Plantador.tabPlantador);
         
         coffee_cup = new CoffeeCup();
-        coffee_cup.setUnlocalizedName("coffee_cup").setTextureName(Info.ID + ":food/coffee_cup").setCreativeTab(CreativeTabs.tabFood);
+        coffee_cup.setUnlocalizedName("coffee_cup").setTextureName(Info.ID + ":food/coffee_cup").setCreativeTab(Plantador.tabPlantador);
         
         chicorybroadbean_stew = new ItemSoup(7);
-        chicorybroadbean_stew.setUnlocalizedName("chicorybroadbean_stew").setTextureName(Info.ID + ":food/chicory&broadbean_stew").setCreativeTab(CreativeTabs.tabFood);
+        chicorybroadbean_stew.setUnlocalizedName("chicorybroadbean_stew").setTextureName(Info.ID + ":food/chicory&broadbean_stew").setCreativeTab(Plantador.tabPlantador);
         
         GameRegistry.registerItem(cheese, cheese.getUnlocalizedName());
         GameRegistry.registerItem(ham, ham.getUnlocalizedName());

@@ -34,7 +34,6 @@ public class BuildingStairs extends BlockStairs {
         this.setHardness(1.5F);
         this.setResistance(10F);
         this.setHarvestLevel("pickaxe", 0);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
     
 }

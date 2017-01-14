@@ -17,8 +17,8 @@
 package com.raffaele.plantador.items;
 
 import com.raffaele.plantador.Info;
+import com.raffaele.plantador.Plantador;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,10 +35,10 @@ public class PlantadorItems
    public static void preInit()
    {
        cup = new Item();
-       cup.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("cup").setTextureName(Info.ID + ":cup");
+       cup.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("cup").setTextureName(Info.ID + ":cup");
        
        cup_raw = new Item();
-       cup_raw.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("cup_raw").setTextureName(Info.ID + ":cup_raw");
+       cup_raw.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("cup_raw").setTextureName(Info.ID + ":cup_raw");
        
        GameRegistry.registerItem(cup, cup.getUnlocalizedName());
        GameRegistry.registerItem(cup_raw, cup_raw.getUnlocalizedName());

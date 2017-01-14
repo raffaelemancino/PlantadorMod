@@ -18,6 +18,7 @@ package com.raffaele.plantador.plant;
 
 import com.raffaele.plantador.plant.wine.WineBlock;
 import com.raffaele.plantador.Info;
+import com.raffaele.plantador.Plantador;
 import com.raffaele.plantador.plant.broadbean.BroadBeanBlock;
 import com.raffaele.plantador.plant.coffee.CoffeeBlock;
 import com.raffaele.plantador.plant.cotton.CottonBlock;
@@ -26,7 +27,6 @@ import com.raffaele.plantador.plant.tobacco.TobaccoBlock;
 import com.raffaele.plantador.plant.tobacco.Pipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -71,7 +71,7 @@ public class Plant {
     public static void preInit()
     {
         chicory = new Item();
-        chicory.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("chicory").setTextureName(Info.ID + ":chicory");
+        chicory.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("chicory").setTextureName(Info.ID + ":chicory");
         
         GameRegistry.registerItem(chicory, chicory.getUnlocalizedName());
         MinecraftForge.addGrassSeed(new ItemStack(chicory), 12);
@@ -80,10 +80,10 @@ public class Plant {
         cottonBlock.setBlockName("cotton_block").setBlockTextureName(Info.ID + ":cotton/cotton");
         
         cottonSeed = new ItemSeeds(cottonBlock, Blocks.farmland);
-        cottonSeed.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("cotton_seed").setTextureName(Info.ID + ":cotton/cotton_seed");
+        cottonSeed.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("cotton_seed").setTextureName(Info.ID + ":cotton/cotton_seed");
         
         cottonCrop = new Item();
-        cottonCrop.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("cotton_crop").setTextureName(Info.ID + ":cotton/cotton_crop");
+        cottonCrop.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("cotton_crop").setTextureName(Info.ID + ":cotton/cotton_crop");
         
         GameRegistry.registerBlock(cottonBlock, cottonBlock.getUnlocalizedName());
         GameRegistry.registerItem(cottonSeed, cottonSeed.getUnlocalizedName());
@@ -93,16 +93,16 @@ public class Plant {
         tobaccoBlock.setBlockName("tobacco_block").setBlockTextureName(Info.ID + ":tobacco/tobacco");
         
         tobaccoSeed = new ItemSeeds(tobaccoBlock, Blocks.farmland);
-        tobaccoSeed.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("tobacco_seed").setTextureName(Info.ID + ":tobacco/tobacco_seed");
+        tobaccoSeed.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("tobacco_seed").setTextureName(Info.ID + ":tobacco/tobacco_seed");
         
         tobaccoCrop = new Item();
-        tobaccoCrop.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("tobacco_crop").setTextureName(Info.ID + ":tobacco/tobacco_crop");
+        tobaccoCrop.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("tobacco_crop").setTextureName(Info.ID + ":tobacco/tobacco_crop");
         
         tobacco = new Item();
-        tobacco.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("tobacco").setTextureName(Info.ID + ":tobacco/tobacco");
+        tobacco.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("tobacco").setTextureName(Info.ID + ":tobacco/tobacco");
         
         pipe = new Pipe();
-        pipe.setCreativeTab(CreativeTabs.tabTools).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
+        pipe.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
                 
         GameRegistry.registerBlock(tobaccoBlock, tobaccoBlock.getUnlocalizedName());
         GameRegistry.registerItem(tobaccoSeed, tobaccoSeed.getUnlocalizedName());
@@ -114,10 +114,10 @@ public class Plant {
         wineBlock.setBlockName("wine_block").setBlockTextureName(Info.ID + ":wine/wine");
         
         wineSeed = new ItemSeeds(wineBlock, Blocks.farmland);
-        wineSeed.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("wine_seed").setTextureName(Info.ID + ":wine/wine_seed");
+        wineSeed.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("wine_seed").setTextureName(Info.ID + ":wine/wine_seed");
         
         wineCrop = new ItemFood(4, 0.3F, false);
-        wineCrop.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("wine_crop").setTextureName(Info.ID + ":wine/wine_crop");
+        wineCrop.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("wine_crop").setTextureName(Info.ID + ":wine/wine_crop");
         
         GameRegistry.registerBlock(wineBlock, wineBlock.getUnlocalizedName());
         GameRegistry.registerItem(wineSeed, wineSeed.getUnlocalizedName());
@@ -127,10 +127,10 @@ public class Plant {
         coffeeBlock.setBlockName("coffee_block").setBlockTextureName(Info.ID + ":coffee/coffee");
         
         coffeeSeed = new ItemSeeds(coffeeBlock, Blocks.farmland);
-        coffeeSeed.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("coffee_seed").setTextureName(Info.ID + ":coffee/coffee_seed");
+        coffeeSeed.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("coffee_seed").setTextureName(Info.ID + ":coffee/coffee_seed");
         
         coffee = new Item();
-        coffee.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("coffee").setTextureName(Info.ID + ":coffee/coffee");
+        coffee.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("coffee").setTextureName(Info.ID + ":coffee/coffee");
         
         GameRegistry.registerBlock(coffeeBlock, coffeeBlock.getUnlocalizedName());
         GameRegistry.registerItem(coffeeSeed, coffeeSeed.getUnlocalizedName());
@@ -140,7 +140,7 @@ public class Plant {
         broadbeanBlock.setBlockName("broadbean_block").setBlockTextureName(Info.ID + ":broadbean/broadbean");
         
         broadbean = new ItemSeeds(broadbeanBlock, Blocks.farmland);
-        broadbean.setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("broadbean").setTextureName(Info.ID + ":broadbean/broadbean");
+        broadbean.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("broadbean").setTextureName(Info.ID + ":broadbean/broadbean");
         
         GameRegistry.registerBlock(broadbeanBlock, broadbeanBlock.getUnlocalizedName());
         GameRegistry.registerItem(broadbean, broadbean.getUnlocalizedName());
@@ -149,7 +149,7 @@ public class Plant {
         lettuceBlock.setBlockName("lettuceBlock").setBlockTextureName(Info.ID + ":lettuce/lettuce");
         
         lettuce = new ItemSeedFood(3, 0.4F, lettuceBlock, lettuceBlock);
-        lettuce.setCreativeTab(CreativeTabs.tabFood).setUnlocalizedName("lettuce").setTextureName(Info.ID + ":lettuce");
+        lettuce.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("lettuce").setTextureName(Info.ID + ":lettuce");
         
         GameRegistry.registerBlock(lettuceBlock, lettuceBlock.getUnlocalizedName());
         GameRegistry.registerItem(lettuce, lettuce.getUnlocalizedName());
