@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador;
+package com.raffaele.plantador.build.sculptortable;
 
 import com.raffaele.plantador.build.Build;
 import net.minecraft.entity.player.EntityPlayer;
@@ -75,11 +75,13 @@ public class ContainerSculptor extends Container
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 
+    @Override
     public void onCraftMatrixChanged(IInventory inventory)
     {
         this.craftResult.setInventorySlotContents(0, CraftingManagerSculptor.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
     
+    @Override
     public void onContainerClosed(EntityPlayer player)
     {
         super.onContainerClosed(player);
@@ -98,10 +100,12 @@ public class ContainerSculptor extends Container
         }
     }
 
+    @Override
     public boolean canInteractWith(EntityPlayer p_75145_1_) {
-        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Build.table ? false : p_75145_1_.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Build.table_sculptor ? false : p_75145_1_.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
     }
     
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int i)
     {
         ItemStack itemstack = null;
@@ -159,11 +163,8 @@ public class ContainerSculptor extends Container
 
         return itemstack;
     }
-
-    public ItemStack slotClick(int slotID, int button, int flag, EntityPlayer player) {
-        return super.slotClick(slotID, button, flag, player);
-    }
     
+    @Override
     public boolean func_94530_a(ItemStack stack, Slot slot)
     {
         return slot.inventory != this.craftResult && super.func_94530_a(stack, slot);

@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.plant.wine;
+package com.raffaele.plantador.plant.coffee;
 
 import com.raffaele.plantador.plant.Plant;
 import cpw.mods.fml.relauncher.Side;
@@ -34,7 +34,7 @@ import net.minecraft.world.World;
  *
  * @author Raffaele Francesco Mancino
  */
-public class WineBlock extends BlockCrops
+public class CoffeeBlock extends BlockCrops
 {
     
     private IIcon[] level;
@@ -72,7 +72,7 @@ public class WineBlock extends BlockCrops
                 {
                     ;
                 }
-                if (h<3 && meta>=7)
+                if (h<2 && meta>=7)
                 {
                     if (rand.nextInt(15)==0)
                     {
@@ -110,9 +110,7 @@ public class WineBlock extends BlockCrops
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         if (metadata>=8)
         {
-            ret.add(new ItemStack(this.func_149865_P()));
-            ret.add(new ItemStack(this.func_149865_P()));
-            ret.add(new ItemStack(this.func_149865_P()));
+            ret.add(new ItemStack(this.func_149865_P(), 3));
         }else{
             ret.add(new ItemStack(this.func_149866_i()));
         }
@@ -123,12 +121,12 @@ public class WineBlock extends BlockCrops
     @Override
     protected Item func_149866_i()
     {
-        return Plant.wineSeed;
+        return Plant.coffeeSeed;
     }
     
     @Override
     protected Item func_149865_P()
     {
-        return Plant.wineCrop;
+        return Plant.coffeeSeed;
     }
 }

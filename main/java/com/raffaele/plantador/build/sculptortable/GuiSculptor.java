@@ -14,8 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador;
+package com.raffaele.plantador.build.sculptortable;
 
+import com.raffaele.plantador.Info;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -52,8 +53,6 @@ public class GuiSculptor extends GuiContainer{
     protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
     {
         GL11.glColor4f(1F, 1F, 1F, 1F);
-		
-        //Minecraft.getMinecraft().getTextureManager().bindTexture(this.texture);
         this.mc.getTextureManager().bindTexture(this.texture);
 	int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;

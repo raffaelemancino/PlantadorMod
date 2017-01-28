@@ -14,35 +14,39 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador;
+package com.raffaele.plantador.food;
 
-import com.raffaele.plantador.build.sculptortable.GuiSculptor;
-import com.raffaele.plantador.build.sculptortable.ContainerSculptor;
-import cpw.mods.fml.common.network.IGuiHandler;
+import com.raffaele.plantador.items.PlantadorItems;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerWorkbench;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class GuiHandler implements IGuiHandler{
+public class CoffeeCup extends ItemFood
+{
 
-    @Override
-    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-    {        
-        if (ID == Plantador.TABLE_SCULPTOR)
-            return new ContainerSculptor(player.inventory, world, x, y, z);
-        return null;
+    public CoffeeCup() {
+        super(2, false);
+        setMaxStackSize(1);
     }
 
     @Override
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+    public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
+        super.onEaten(item, world, player);
+        player.addPotionEffect(new PotionEffect(3, 500, 2, false));
+        //player.addPotionEffect(new PotionEffect(17, 500, 5, false));
+        return new ItemStack(PlantadorItems.cup);
+    }
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack item)
     {
-        if (ID == Plantador.TABLE_SCULPTOR)
-            return new GuiSculptor(player.inventory, world, x, y, z);
-        return null;
+        return EnumAction.drink;
     }
-    
 }

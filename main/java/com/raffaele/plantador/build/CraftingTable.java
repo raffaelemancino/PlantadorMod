@@ -46,7 +46,6 @@ class CraftingTable extends Block
         this.setHardness(1.5F);
         this.setResistance(5.0F);
         this.setHarvestLevel("pickaxe", 0);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
         this.guiID = id;
     }
     
@@ -79,10 +78,9 @@ class CraftingTable extends Block
     {
         if (world.isRemote)
         {
-            //player.displayGUIWorkbench(x, y, z);
-            player.openGui(Plantador.instance, guiID, world, x, y, z);
             return true;
         }else{
+            player.openGui(Plantador.instance, guiID, world, x, y, z);
             return false;
         }
     }

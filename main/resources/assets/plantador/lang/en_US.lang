@@ -8,9 +8,27 @@ item.tobacco_crop.name=Tobacco Leaf
 item.tobacco.name=Tobacco
 item.pipe.name=Pipe
 
+#wine
+item.wine_seed.name=Grapes Seed
+item.wine_crop.name=Grapes
+
+#coffee
+item.coffee_seed.name=Coffee Seed
+item.coffee.name=Coffee
+item.coffee_cup.name=Coffee Cup
+
+#broadbean
+item.broadbean.name=Broad Bean
+
+#lettuce
+item.lettuce.name=Lattuce
+
 #food
 item.cheese.name=Cheese
 item.ham.name=Ham
+item.chicory.name=Chicory
+item.chicory_stew.name=Chicory Stew
+item.chicorybroadbean_stew.name=Chicory and Broad Bean Stew
 
 #buildings
 tile.clay_tiles.name=Clay Tiles
@@ -21,4 +39,20 @@ tile.marble_doric.name=Doric Pillar
 tile.marble_ionic.name=Ionic Pillar
 tile.marble_corinthian.name=Corinthian Pillar
 tile.marble_stairs.name=Marble Stairs
+tile.marble_slab.name=Marble Slab
 tile.table.name=Table
+
+#items
+item.cup.name=Cup
+item.cup_raw.name=Raw Cup
+item.coffeepot_moka.name=Moka Coffeepot
+item.coffeepot_moka_loaded.name=Moka Coffeepot Loaded
+item.coffeepot_moka_cooked.name=Moka Coffeepot Cooked
+item.coffeepot_neapolis.name=Neapolitan Coffeepot
+item.coffeepot_neapolis_loaded.name=Neapolitan Coffeepot Loaded
+item.coffeepot_neapolis_cooked.name=Neapolitan Coffeepot Cooked
+item.amphora.name=Amphora
+item.amphora_raw.name=Amphora Raw
+
+#tab
+itemGroup.tabPlantador=Plantador
