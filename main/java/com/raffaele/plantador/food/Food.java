@@ -78,12 +78,19 @@ public class Food {
                 "xx",
                 " y",
                 'x', new ItemStack(Plant.chicory),
-                'y', new ItemStack(Items.bowl));
-        GameRegistry.addRecipe(new ItemStack(coffee_cup),
-                "x",
-                "y",
-                'x', new ItemStack(Plant.coffee),
-                'y', new ItemStack(PlantadorItems.cup));
+                'y', new ItemStack(Items.bowl));        
+        GameRegistry.addRecipe(new ItemStack(coffee_cup,6),
+                "xxx",
+                "xxx",
+                " y ",
+                'x', new ItemStack(PlantadorItems.cup),
+                'y', new ItemStack(PlantadorItems.coffeepot_neapolis_cooked));
+        GameRegistry.addRecipe(new ItemStack(coffee_cup,6),
+                "xxx",
+                "xxx",
+                " y ",
+                'x', new ItemStack(PlantadorItems.cup),
+                'y', new ItemStack(PlantadorItems.coffeepot_moka_cooked));
         GameRegistry.addRecipe(new ItemStack(chicorybroadbean_stew),
                 "xy",
                 " z",
@@ -91,5 +98,4 @@ public class Food {
                 'y',new ItemStack(Plant.chicory),
                 'z',new ItemStack(Items.bowl));
     }
-    
 }

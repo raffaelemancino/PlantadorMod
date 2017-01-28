@@ -45,6 +45,14 @@ tile.table.name=Table
 #items
 item.cup.name=Cup
 item.cup_raw.name=Raw Cup
+item.coffeepot_moka.name=Moka Coffeepot
+item.coffeepot_moka_loaded.name=Moka Coffeepot Loaded
+item.coffeepot_moka_cooked.name=Moka Coffeepot Cooked
+item.coffeepot_neapolis.name=Neapolitan Coffeepot
+item.coffeepot_neapolis_loaded.name=Neapolitan Coffeepot Loaded
+item.coffeepot_neapolis_cooked.name=Neapolitan Coffeepot Cooked
+item.amphora.name=Amphora
+item.amphora_raw.name=Amphora Raw
 
 #tab
 itemGroup.tabPlantador=Plantador

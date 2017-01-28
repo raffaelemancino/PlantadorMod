@@ -36,7 +36,7 @@ public class Build
     public static Block clay_tiles_stairs;
     public static Block marble;
     public static Block marble_brick;
-    public static Block marble_slab;
+    public static Block marble_slab_half;
     public static Block marble_stairs;
     public static Block marble_doric;
     public static Block marble_ionic;
@@ -49,7 +49,7 @@ public class Build
         
         marble = new BuildingBlock("marble").setBlockTextureName(Info.ID + ":build/marble/" + "marble").setCreativeTab(Plantador.tabPlantador);
         marble_brick = new BuildingBlock("marble_brick").setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick").setCreativeTab(Plantador.tabPlantador);
-        marble_slab = new BuildingSlab(Material.rock, "marble_slab", false).setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick").setCreativeTab(Plantador.tabPlantador);
+        marble_slab_half = new BuildingSlab(Material.rock, "marble_slab", false).setBlockTextureName(Info.ID + ":build/marble/" + "marble_brick").setCreativeTab(Plantador.tabPlantador);
         marble_stairs = new BuildingStairs(marble_brick, "marble_stairs").setCreativeTab(Plantador.tabPlantador);
         
         marble_doric = new BuildingPillar("marble_doric", "doric").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar").setCreativeTab(Plantador.tabPlantador);
@@ -61,7 +61,7 @@ public class Build
         
         GameRegistry.registerBlock(marble, marble.getUnlocalizedName());
         GameRegistry.registerBlock(marble_brick, marble_brick.getUnlocalizedName());
-        GameRegistry.registerBlock(marble_slab, marble_slab.getUnlocalizedName());
+        GameRegistry.registerBlock(marble_slab_half, marble_slab_half.getUnlocalizedName());
         GameRegistry.registerBlock(marble_stairs, marble_stairs.getUnlocalizedName());
         
         GameRegistry.registerBlock(marble_doric, marble_doric.getUnlocalizedName());

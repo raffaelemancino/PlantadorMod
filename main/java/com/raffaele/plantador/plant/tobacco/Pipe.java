@@ -16,12 +16,14 @@
  */
 package com.raffaele.plantador.plant.tobacco;
 
+import com.raffaele.plantador.Info;
 import com.raffaele.plantador.plant.Plant;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import java.lang.Math;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 
 /**
@@ -70,6 +72,7 @@ public class Pipe extends Item {
             z0 *= 0.4;
             world.spawnParticle("smoke", player.posX + x0, player.posY, player.posZ + z0, 0.0D, 0.0D, 0.0D);
         }
+        //world.playSoundAtEntity((Entity)player, Info.ID + ":puff.ogg", 1.0F, (itemRand.nextFloat() - itemRand.nextFloat()) * 0.2f + 1.0f);
         if (player.canEat(false))
         {
             player.getFoodStats().addStats(2, 0.3F);

@@ -166,11 +166,14 @@ public class Plant {
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), new ItemStack(Blocks.wool));
         
         GameRegistry.addSmelting(new ItemStack(tobaccoCrop), new ItemStack(tobacco), 5); //producing tobacco
-        GameRegistry.addRecipe(new ItemStack(pipe),
+        for(int i=0;i<6;i++) //pipe with all tipe of wood
+        {
+            GameRegistry.addRecipe(new ItemStack(pipe),
                 "x  ",
                 "xyy",
-                'x', new ItemStack(Blocks.planks),
+                'x', new ItemStack(Blocks.planks,1,i),
                 'y', new ItemStack(Items.stick));
+        }
         GameRegistry.addShapelessRecipe(new ItemStack(wineSeed, 3), new ItemStack(wineCrop));
         GameRegistry.addSmelting(new ItemStack(coffeeSeed), new ItemStack(coffee), 5);
     }
