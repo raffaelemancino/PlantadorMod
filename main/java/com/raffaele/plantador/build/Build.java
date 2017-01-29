@@ -113,7 +113,7 @@ public class Build
         CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_slab_half, 6), //marble slab
                 "xxx",
                 'x', new ItemStack(marble_brick));
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_stairs), //marble stairs
+        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_stairs, 4), //marble stairs
                 "  x",
                 " xx",
                 "xxx",
