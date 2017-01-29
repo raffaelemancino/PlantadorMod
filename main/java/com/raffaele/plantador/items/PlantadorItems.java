@@ -64,7 +64,7 @@ public class PlantadorItems
        coffeepot_moka_cooked.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("coffeepot_moka_cooked").setTextureName(Info.ID + ":coffeepot_moka_2").setContainerItem(coffeepot_moka);
        
        amphora = new Item();
-       amphora.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("amphora").setTextureName(Info.ID + ":amphora");
+       amphora.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("amphora").setTextureName(Info.ID + ":amphora_1");
        
        amphora_raw = new Item();
        amphora_raw.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("amphora_raw").setTextureName(Info.ID + ":amphora_raw");

@@ -30,11 +30,12 @@ import org.lwjgl.opengl.GL11;
  */
 public class GuiSculptor extends GuiContainer{
 
-    private ResourceLocation texture = new ResourceLocation(Info.ID + ":textures/gui/" + "gui_table.png");
+    private ResourceLocation texture;
     
     public GuiSculptor(InventoryPlayer inventory, World world, int x, int y, int z) {
         super(new ContainerSculptor(inventory, world, x, y, z));
         
+        texture =  new ResourceLocation(Info.ID + ":textures/gui/" + "gui_table.png");
         this.xSize = 176;
         this.ySize = 166;
     }
@@ -47,6 +48,7 @@ public class GuiSculptor extends GuiContainer{
     @Override
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
         this.fontRendererObj.drawString(StatCollector.translateToLocal("Sculptor"), 28, 6, 4210752);
+        this.fontRendererObj.drawString(StatCollector.translateToLocal("Inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
     
     @Override
