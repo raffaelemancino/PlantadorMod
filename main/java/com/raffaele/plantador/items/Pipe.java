@@ -16,15 +16,16 @@
  */
 package com.raffaele.plantador.items;
 
-import com.raffaele.plantador.Info;
 import com.raffaele.plantador.plant.Plant;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import java.lang.Math;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 
 /**
  *
@@ -51,7 +52,6 @@ public class Pipe extends Item {
         {
             player.setItemInUse(item, this.getMaxItemUseDuration(item));
         }
-
         return item;
     }
     
@@ -64,21 +64,47 @@ public class Pipe extends Item {
     @Override
     public void onPlayerStoppedUsing(ItemStack item, World world, EntityPlayer player, int itemInUse)
     {
-        for (int i=0; i<20; i++)
+        boolean loaded = this.pipe_loaded(item, player, itemInUse);
+        if (loaded)
         {
-            float x0 = -(float)Math.sin(Math.toRadians(player.rotationYawHead));
-            float z0 = (float)Math.cos(Math.toRadians(player.rotationYawHead));
-            x0 *= 0.4;
-            z0 *= 0.4;
-            world.spawnParticle("smoke", player.posX + x0, player.posY, player.posZ + z0, 0.0D, 0.0D, 0.0D);
-        }
-        //world.playSoundAtEntity((Entity)player, Info.ID + ":puff.ogg", 1.0F, (itemRand.nextFloat() - itemRand.nextFloat()) * 0.2f + 1.0f);
-        if (player.canEat(false))
+            for (int i=0; i<20; i++)
+            {
+                float x0 = -(float)Math.sin(Math.toRadians(player.rotationYawHead));
+                float z0 = (float)Math.cos(Math.toRadians(player.rotationYawHead));
+                x0 *= 0.4;
+                z0 *= 0.4;
+                world.spawnParticle("smoke", player.posX + x0, player.posY, player.posZ + z0, 0.0D, 0.0D, 0.0D);
+            }
+            
+            if (player.canEat(false))
+            {
+                player.getFoodStats().addStats(2, 0.3F);
+            }
+            player.inventory.consumeInventoryItem(Plant.tobacco);
+            item.damageItem(1, player);
+        }else{
+            /*null*/
+        }        
+    }
+    
+    private boolean pipe_loaded(ItemStack item, EntityPlayer player, int i)
+    {
+        int j = this.getMaxItemUseDuration(item) - i;
+
+        ArrowLooseEvent event = new ArrowLooseEvent(player, item, j);
+        MinecraftForge.EVENT_BUS.post(event);
+        if (event.isCanceled())
         {
-            player.getFoodStats().addStats(2, 0.3F);
+            return false;
         }
-        player.inventory.consumeInventoryItem(Plant.tobacco);
-        item.damageItem(1, player);
+        
+        j = event.charge;
+        if (j >=20)
+        {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
