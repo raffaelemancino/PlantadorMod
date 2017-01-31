@@ -14,30 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.build;
+package com.raffaele.plantador.blocks;
 
-import net.minecraft.block.BlockSlab;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
+import com.raffaele.plantador.Info;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStairs;
+import net.minecraft.creativetab.CreativeTabs;
 
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class BuildingSlab extends BlockSlab
-{
-    public BuildingSlab(Material material, String name, boolean double_slab)
+public class BuildingStairs extends BlockStairs {
+    public BuildingStairs(Block block, String name)
     {
-        super(double_slab, material);//
+        super(block, 0);
         this.setBlockName(name);
+        this.setBlockTextureName(Info.ID + ":build/" + block.getUnlocalizedName());
         this.setHardness(1.5F);
         this.setResistance(10F);
         this.setHarvestLevel("pickaxe", 0);
     }
-
-    @Override
-    public String func_150002_b(int p_150002_1_) {
-        return null;
-    }
+    
 }

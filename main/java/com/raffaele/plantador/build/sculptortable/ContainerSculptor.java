@@ -16,7 +16,7 @@
  */
 package com.raffaele.plantador.build.sculptortable;
 
-import com.raffaele.plantador.build.Build;
+import com.raffaele.plantador.blocks.PlantadorBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -102,7 +102,7 @@ public class ContainerSculptor extends Container
 
     @Override
     public boolean canInteractWith(EntityPlayer p_75145_1_) {
-        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != Build.table_sculptor ? false : p_75145_1_.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+        return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != PlantadorBlocks.table_sculptor ? false : p_75145_1_.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
     }
     
     @Override

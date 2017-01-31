@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.build;
+package com.raffaele.plantador.blocks;
 
 import com.raffaele.plantador.Info;
 import com.raffaele.plantador.Plantador;
@@ -26,11 +26,24 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
+
+
+/** original minecraft for furnace
+ * 
+ * import net.minecraft.block.BlockFurnace;
+ * import net.minecraft.inventory.ContainerFurnace;
+ * import net.minecraft.client.gui.inventory.GuiFurnace;
+ * import net.minecraft.tileentity.TileEntityFurnace;
+ * import net.minecraft.item.crafting.FurnaceRecipes;
+ * 
+ */
+
+
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class Build
+public class PlantadorBlocks
 {
     
     public static Block clay_tiles;
@@ -42,7 +55,10 @@ public class Build
     public static Block marble_doric;
     public static Block marble_ionic;
     public static Block marble_corinthian;
+    public static Block marble_chiseled;
     public static Block table_sculptor;
+    public static Block barrel;
+    public static Block barrel_active;
         
     public static void preInit()
     {
@@ -58,6 +74,8 @@ public class Build
         marble_ionic = new BuildingPillar("marble_ionic", "ionic").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar").setCreativeTab(Plantador.tabPlantador);
         marble_corinthian = new BuildingPillar("marble_corinthian", "corinthian").setBlockTextureName(Info.ID + ":build/marble/" + "marble_pillar").setCreativeTab(Plantador.tabPlantador);
         
+        marble_chiseled = new BuildingBlock("marble_chiseled").setBlockTextureName(Info.ID + ":build/marble/" + "marble_chiseled").setCreativeTab(Plantador.tabPlantador);
+        
         GameRegistry.registerBlock(clay_tiles, clay_tiles.getUnlocalizedName());
         GameRegistry.registerBlock(clay_tiles_stairs, clay_tiles_stairs.getUnlocalizedName());
         
@@ -70,9 +88,16 @@ public class Build
         GameRegistry.registerBlock(marble_ionic, marble_ionic.getUnlocalizedName());
         GameRegistry.registerBlock(marble_corinthian, marble_corinthian.getUnlocalizedName());
         
-        table_sculptor = new CraftingTable("table", Plantador.TABLE_SCULPTOR).setBlockTextureName(Info.ID + ":build/" + "table").setCreativeTab(Plantador.tabPlantador);
+        GameRegistry.registerBlock(marble_chiseled, marble_chiseled.getUnlocalizedName());
+        
+        table_sculptor = new CraftingTable("table_sculptor", Plantador.TABLE_SCULPTOR).setBlockTextureName(Info.ID + ":build/" + "table_sculptor").setCreativeTab(Plantador.tabPlantador);
         GameRegistry.registerBlock(table_sculptor, table_sculptor.getUnlocalizedName());
-       
+        
+        barrel = new Barrel(false).setBlockName("barrel").setBlockTextureName(Info.ID + ":build/" + "barrel").setCreativeTab(Plantador.tabPlantador);
+        barrel_active = new Barrel(true).setBlockName("barrel_active").setBlockTextureName(Info.ID + ":build/" + "barrel");
+        GameRegistry.registerBlock(barrel, barrel.getUnlocalizedName());
+        GameRegistry.registerBlock(barrel_active, barrel_active.getUnlocalizedName());
+        
         crafting();
     }
     
@@ -110,6 +135,10 @@ public class Build
                 "xx",
                 "xx",
                 'x',new ItemStack(marble));
+        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_chiseled, 4), //marble brick
+                "xx",
+                "xx",
+                'x',new ItemStack(marble_brick));
         CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_slab_half, 6), //marble slab
                 "xxx",
                 'x', new ItemStack(marble_brick));

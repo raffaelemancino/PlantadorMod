@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.build;
+package com.raffaele.plantador.blocks;
 
 import com.raffaele.plantador.Info;
 import com.raffaele.plantador.Plantador;
@@ -23,12 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraft.block.BlockWorkbench;
-import net.minecraft.inventory.ContainerWorkbench;
 
 /**
  *

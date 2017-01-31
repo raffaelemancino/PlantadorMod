@@ -20,6 +20,7 @@ import com.raffaele.plantador.Info;
 import com.raffaele.plantador.Plantador;
 import com.raffaele.plantador.plant.Plant;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,6 +33,7 @@ public class PlantadorItems
 {
     public static Item cup;
     public static Item cup_raw;
+    public static Item pipe;
     public static Item coffeepot_neapolis;
     public static Item coffeepot_neapolis_loaded;
     public static Item coffeepot_neapolis_cooked;
@@ -48,6 +50,9 @@ public class PlantadorItems
        
        cup_raw = new Item();
        cup_raw.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("cup_raw").setTextureName(Info.ID + ":cup_raw");
+       
+       pipe = new Pipe();
+       pipe.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("pipe").setTextureName(Info.ID + ":pipe");
        
        coffeepot_neapolis = new Item();
        coffeepot_neapolis.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("coffeepot_neapolis").setTextureName(Info.ID + ":coffeepot_neapolis_0");
@@ -71,6 +76,7 @@ public class PlantadorItems
        
        GameRegistry.registerItem(cup, cup.getUnlocalizedName());
        GameRegistry.registerItem(cup_raw, cup_raw.getUnlocalizedName());
+       GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
        GameRegistry.registerItem(coffeepot_neapolis, coffeepot_neapolis.getUnlocalizedName());
        GameRegistry.registerItem(coffeepot_neapolis_loaded, coffeepot_neapolis_loaded.getUnlocalizedName());
        GameRegistry.registerItem(coffeepot_neapolis_cooked, coffeepot_neapolis_cooked.getUnlocalizedName());
@@ -98,6 +104,14 @@ public class PlantadorItems
                " x ",
                'x', new ItemStack(Items.clay_ball));
        GameRegistry.addSmelting(new ItemStack(cup_raw), new ItemStack(cup), 0);
+       for(int i=0;i<6;i++) //pipe with all tipe of wood
+        {
+            GameRegistry.addRecipe(new ItemStack(pipe),
+                "x  ",
+                "xyy",
+                'x', new ItemStack(Blocks.planks,1,i),
+                'y', new ItemStack(Items.stick));
+        }       
        GameRegistry.addRecipe(new ItemStack(amphora_raw),
                " x ",
                "x x",

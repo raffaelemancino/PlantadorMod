@@ -24,7 +24,7 @@ import com.raffaele.plantador.plant.coffee.CoffeeBlock;
 import com.raffaele.plantador.plant.cotton.CottonBlock;
 import com.raffaele.plantador.plant.lettuce.LettuceBlock;
 import com.raffaele.plantador.plant.tobacco.TobaccoBlock;
-import com.raffaele.plantador.plant.tobacco.Pipe;
+import com.raffaele.plantador.items.Pipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -52,7 +52,6 @@ public class Plant {
     public static Item tobaccoSeed;
     public static Item tobaccoCrop;
     public static Item tobacco;
-    public static Item pipe;
     
     public static Block wineBlock;
     public static Item wineSeed;
@@ -101,15 +100,12 @@ public class Plant {
         tobacco = new Item();
         tobacco.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("tobacco").setTextureName(Info.ID + ":tobacco/tobacco");
         
-        pipe = new Pipe();
-        pipe.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("pipe").setTextureName(Info.ID + ":tobacco/pipe");
-                
+                        
         GameRegistry.registerBlock(tobaccoBlock, tobaccoBlock.getUnlocalizedName());
         GameRegistry.registerItem(tobaccoSeed, tobaccoSeed.getUnlocalizedName());
         GameRegistry.registerItem(tobaccoCrop, tobaccoCrop.getUnlocalizedName());
         GameRegistry.registerItem(tobacco, tobacco.getUnlocalizedName());
-        GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
-        
+                
         wineBlock = new WineBlock();
         wineBlock.setBlockName("wine_block").setBlockTextureName(Info.ID + ":wine/wine");
         
@@ -171,14 +167,7 @@ public class Plant {
         GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 4), new ItemStack(Blocks.wool));
         
         GameRegistry.addSmelting(new ItemStack(tobaccoCrop), new ItemStack(tobacco), 5); //producing tobacco
-        for(int i=0;i<6;i++) //pipe with all tipe of wood
-        {
-            GameRegistry.addRecipe(new ItemStack(pipe),
-                "x  ",
-                "xyy",
-                'x', new ItemStack(Blocks.planks,1,i),
-                'y', new ItemStack(Items.stick));
-        }
+        
         GameRegistry.addShapelessRecipe(new ItemStack(wineSeed, 3), new ItemStack(wineCrop));
         GameRegistry.addSmelting(new ItemStack(coffeeSeed), new ItemStack(coffee), 5);
     }

@@ -17,7 +17,7 @@
 package com.raffaele.plantador;
 
 import com.raffaele.plantador.plant.Plant;
-import com.raffaele.plantador.build.Build;
+import com.raffaele.plantador.blocks.PlantadorBlocks;
 import com.raffaele.plantador.food.Food;
 import com.raffaele.plantador.items.PlantadorItems;
 
@@ -47,6 +47,7 @@ public class Plantador
     };
     
     public static int TABLE_SCULPTOR = 1;
+    public static int BARREL = 2;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -54,7 +55,7 @@ public class Plantador
         System.err.println("Plantador version: " + Info.VERSION);
         System.out.println("++++++++++MOD PREINIT++++++++++");
         Plant.preInit();
-        Build.preInit();
+        PlantadorBlocks.preInit();
         Food.preInit();
         PlantadorItems.preInit();
     }
@@ -65,7 +66,7 @@ public class Plantador
         System.out.println("++++++++++MOD INIT++++++++++");
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         Plant.init();
-        Build.init();
+        PlantadorBlocks.init();
         Food.init();
         PlantadorItems.init();
     }
@@ -75,7 +76,7 @@ public class Plantador
     {
         System.out.println("++++++++++MOD POSTINIT++++++++++");
         Plant.postInit();
-        Build.postInit();
+        PlantadorBlocks.postInit();
         Food.postInit();
     }
 }

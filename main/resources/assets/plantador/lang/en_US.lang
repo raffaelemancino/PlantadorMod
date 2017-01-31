@@ -30,7 +30,7 @@ item.chicory.name=Chicory
 item.chicory_stew.name=Chicory Stew
 item.chicorybroadbean_stew.name=Chicory and Broad Bean Stew
 
-#buildings
+#blocks
 tile.clay_tiles.name=Clay Tiles
 tile.clay_tiles_stairs.name=Clay Tiles Stairs
 tile.marble.name=Marble
@@ -40,7 +40,9 @@ tile.marble_ionic.name=Ionic Pillar
 tile.marble_corinthian.name=Corinthian Pillar
 tile.marble_stairs.name=Marble Stairs
 tile.marble_slab.name=Marble Slab
-tile.table.name=Table
+tile.marble_chiseled.name=Marble Chiseled
+tile.table_sculptor.name=Table Sculpor
+tile.barrel.name=Barrel
 
 #items
 item.cup.name=Cup

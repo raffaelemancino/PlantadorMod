@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.plant.tobacco;
+package com.raffaele.plantador.items;
 
 import com.raffaele.plantador.Info;
 import com.raffaele.plantador.plant.Plant;
