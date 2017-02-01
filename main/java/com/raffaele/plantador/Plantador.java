@@ -54,6 +54,7 @@ public class Plantador
     {
         System.err.println("Plantador version: " + Info.VERSION);
         System.out.println("++++++++++MOD PREINIT++++++++++");
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         Plant.preInit();
         PlantadorBlocks.preInit();
         Food.preInit();
@@ -64,7 +65,6 @@ public class Plantador
     public void init(FMLInitializationEvent event)
     {
         System.out.println("++++++++++MOD INIT++++++++++");
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         Plant.init();
         PlantadorBlocks.init();
         Food.init();

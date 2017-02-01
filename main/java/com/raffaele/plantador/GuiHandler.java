@@ -16,8 +16,8 @@
  */
 package com.raffaele.plantador;
 
-import com.raffaele.plantador.build.sculptortable.GuiSculptor;
-import com.raffaele.plantador.build.sculptortable.ContainerSculptor;
+import com.raffaele.plantador.blocks.sculptortable.GuiSculptor;
+import com.raffaele.plantador.blocks.sculptortable.ContainerSculptor;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ContainerWorkbench;

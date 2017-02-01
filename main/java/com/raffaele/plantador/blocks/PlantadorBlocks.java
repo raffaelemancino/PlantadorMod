@@ -18,7 +18,7 @@ package com.raffaele.plantador.blocks;
 
 import com.raffaele.plantador.Info;
 import com.raffaele.plantador.Plantador;
-import com.raffaele.plantador.build.sculptortable.CraftingManagerSculptor;
+import com.raffaele.plantador.blocks.sculptortable.CraftingManagerSculptor;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -93,8 +93,8 @@ public class PlantadorBlocks
         table_sculptor = new CraftingTable("table_sculptor", Plantador.TABLE_SCULPTOR).setBlockTextureName(Info.ID + ":build/" + "table_sculptor").setCreativeTab(Plantador.tabPlantador);
         GameRegistry.registerBlock(table_sculptor, table_sculptor.getUnlocalizedName());
         
-        barrel = new Barrel(false).setBlockName("barrel").setBlockTextureName(Info.ID + ":build/" + "barrel").setCreativeTab(Plantador.tabPlantador);
-        barrel_active = new Barrel(true).setBlockName("barrel_active").setBlockTextureName(Info.ID + ":build/" + "barrel");
+        barrel = new Barrel(false).setBlockName("barrel").setBlockTextureName(Info.ID + ":" + "barrel").setCreativeTab(Plantador.tabPlantador);
+        barrel_active = new Barrel(true).setBlockName("barrel_active").setBlockTextureName(Info.ID + ":" + "barrel");
         GameRegistry.registerBlock(barrel, barrel.getUnlocalizedName());
         GameRegistry.registerBlock(barrel_active, barrel_active.getUnlocalizedName());
         
@@ -164,5 +164,15 @@ public class PlantadorBlocks
                 "y",
                 'x',new ItemStack(marble),
                 'y',new ItemStack(marble_brick));
+        //barrel
+        for(int i=0;i<6;i++)
+        {
+            GameRegistry.addRecipe(new ItemStack(barrel),
+                "xxx",
+                "y y",
+                "xxx",
+                'x', new ItemStack(Blocks.planks,1,i),
+                'y', new ItemStack(Items.iron_ingot));
+        }
     }
 }

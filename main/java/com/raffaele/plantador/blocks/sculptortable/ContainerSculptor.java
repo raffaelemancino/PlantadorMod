@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.build.sculptortable;
+package com.raffaele.plantador.blocks.sculptortable;
 
 import com.raffaele.plantador.blocks.PlantadorBlocks;
 import net.minecraft.entity.player.EntityPlayer;
