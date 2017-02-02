@@ -35,7 +35,7 @@ public class GuiSculptor extends GuiContainer{
     public GuiSculptor(InventoryPlayer inventory, World world, int x, int y, int z) {
         super(new ContainerSculptor(inventory, world, x, y, z));
         
-        texture =  new ResourceLocation(Info.ID + ":textures/gui/" + "gui_table.png");
+        this.texture =  new ResourceLocation(Info.ID + ":textures/gui/" + "gui_table.png");
         this.xSize = 176;
         this.ySize = 166;
     }

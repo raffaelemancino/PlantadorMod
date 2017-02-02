@@ -33,15 +33,23 @@ public class PlantadorItems
 {
     public static Item cup;
     public static Item cup_raw;
+    
+    public static Item tobacco;
     public static Item pipe;
+    
     public static Item coffeepot_neapolis;
     public static Item coffeepot_neapolis_loaded;
     public static Item coffeepot_neapolis_cooked;
     public static Item coffeepot_moka;
     public static Item coffeepot_moka_loaded;
     public static Item coffeepot_moka_cooked;
+    
     public static Item amphora;
     public static Item amphora_raw;
+    
+    public static Item rwine_bucket;
+    public static Item wwine_bucket;
+    public static Item beer_bucket;
     
    public static void preInit()
    {
@@ -51,6 +59,8 @@ public class PlantadorItems
        cup_raw = new Item();
        cup_raw.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("cup_raw").setTextureName(Info.ID + ":cup_raw");
        
+       tobacco = new Item();
+       tobacco.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("tobacco").setTextureName(Info.ID + ":tobacco");
        pipe = new Pipe();
        pipe.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("pipe").setTextureName(Info.ID + ":pipe");
        
@@ -73,9 +83,16 @@ public class PlantadorItems
        
        amphora_raw = new Item();
        amphora_raw.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("amphora_raw").setTextureName(Info.ID + ":amphora_raw");
+       //alcolici
+       rwine_bucket = new Item();
+       rwine_bucket.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("rwine_bucket").setTextureName(Info.ID + ":rwine_bucket");
+       wwine_bucket = new Item();
+       wwine_bucket.setCreativeTab(Plantador.tabPlantador).setUnlocalizedName("wwine_bucket").setTextureName(Info.ID + ":wwine_bucket");
+       beer_bucket = new Item();
        
        GameRegistry.registerItem(cup, cup.getUnlocalizedName());
        GameRegistry.registerItem(cup_raw, cup_raw.getUnlocalizedName());
+       GameRegistry.registerItem(tobacco, tobacco.getUnlocalizedName());
        GameRegistry.registerItem(pipe, pipe.getUnlocalizedName());
        GameRegistry.registerItem(coffeepot_neapolis, coffeepot_neapolis.getUnlocalizedName());
        GameRegistry.registerItem(coffeepot_neapolis_loaded, coffeepot_neapolis_loaded.getUnlocalizedName());
@@ -85,6 +102,8 @@ public class PlantadorItems
        GameRegistry.registerItem(coffeepot_moka_cooked, coffeepot_moka_cooked.getUnlocalizedName());
        GameRegistry.registerItem(amphora, amphora.getUnlocalizedName());
        GameRegistry.registerItem(amphora_raw, amphora_raw.getUnlocalizedName());
+       GameRegistry.registerItem(rwine_bucket, rwine_bucket.getUnlocalizedName());
+       GameRegistry.registerItem(wwine_bucket, wwine_bucket.getUnlocalizedName());
    }
    
    public static void init()
@@ -104,6 +123,7 @@ public class PlantadorItems
                " x ",
                'x', new ItemStack(Items.clay_ball));
        GameRegistry.addSmelting(new ItemStack(cup_raw), new ItemStack(cup), 0);
+       GameRegistry.addSmelting(new ItemStack(Plant.tobaccoCrop), new ItemStack(tobacco), 5); //producing tobacco
        for(int i=0;i<6;i++) //pipe with all tipe of wood
         {
             GameRegistry.addRecipe(new ItemStack(pipe),

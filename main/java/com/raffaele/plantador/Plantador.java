@@ -41,7 +41,7 @@ public class Plantador
     {
         @Override
         public Item getTabIconItem() {
-            return Plant.wineCrop;
+            return Plant.rwineCrop;
         }
             
     };

@@ -19,7 +19,6 @@ package com.raffaele.plantador.items;
 import com.raffaele.plantador.plant.Plant;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import java.lang.Math;
@@ -48,7 +47,7 @@ public class Pipe extends Item {
     @Override
     public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
     {
-        if (player.capabilities.isCreativeMode || player.inventory.hasItem(Plant.tobacco))
+        if (player.capabilities.isCreativeMode || player.inventory.hasItem(PlantadorItems.tobacco))
         {
             player.setItemInUse(item, this.getMaxItemUseDuration(item));
         }
@@ -80,7 +79,7 @@ public class Pipe extends Item {
             {
                 player.getFoodStats().addStats(2, 0.3F);
             }
-            player.inventory.consumeInventoryItem(Plant.tobacco);
+            player.inventory.consumeInventoryItem(PlantadorItems.tobacco);
             item.damageItem(1, player);
         }else{
             /*null*/

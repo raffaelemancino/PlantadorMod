@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.raffaele.plantador.plant.coffee;
+package com.raffaele.plantador.plant.wine;
 
 import com.raffaele.plantador.plant.Plant;
 import cpw.mods.fml.relauncher.Side;
@@ -29,17 +29,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraft.block.BlockReed;
 
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class CoffeeBlock extends BlockCrops
+public class RWineBlock extends BlockCrops
 {
-    
     private IIcon[] level;
     
-    public CoffeeBlock()
+    public RWineBlock()
     {
         float f = 0.375F;        
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
@@ -78,7 +78,7 @@ public class CoffeeBlock extends BlockCrops
                 {
                     ;
                 }
-                if (h<2 && meta>=7)
+                if (h<3 && meta>=7)
                 {
                     if (rand.nextInt(15)==0)
                     {
@@ -96,10 +96,11 @@ public class CoffeeBlock extends BlockCrops
     {
         this.level = new IIcon[9];
 
-        for (int i = 0; i < this.level.length; ++i)
+        for (int i = 0; i < this.level.length - 1; ++i)
         {
             this.level[i] = p_149651_1_.registerIcon(this.getTextureName() + "_stage_" + i);
         }
+        this.level[8] = p_149651_1_.registerIcon(this.getTextureName() + "_stage_" + 8 + "r");
     }
     
     @SideOnly(Side.CLIENT)
@@ -116,7 +117,9 @@ public class CoffeeBlock extends BlockCrops
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         if (metadata>=8)
         {
-            ret.add(new ItemStack(this.func_149865_P(), 3));
+            ret.add(new ItemStack(this.func_149865_P()));
+            ret.add(new ItemStack(this.func_149865_P()));
+            ret.add(new ItemStack(this.func_149865_P()));
         }else{
             ret.add(new ItemStack(this.func_149866_i()));
         }
@@ -127,12 +130,12 @@ public class CoffeeBlock extends BlockCrops
     @Override
     protected Item func_149866_i()
     {
-        return Plant.coffeeSeed;
+        return Plant.rwineSeed;
     }
     
     @Override
     protected Item func_149865_P()
     {
-        return Plant.coffeeSeed;
+        return Plant.rwineCrop;
     }
 }

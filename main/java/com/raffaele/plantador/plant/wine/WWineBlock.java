@@ -34,10 +34,16 @@ import net.minecraft.world.World;
  *
  * @author Raffaele Francesco Mancino
  */
-public class WineBlock extends BlockCrops
+public class WWineBlock extends BlockCrops
 {
     
     private IIcon[] level;
+    
+    public WWineBlock()
+    {
+        float f = 0.375F;        
+        this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 1.0F, 0.5F + f);
+    }
     
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
@@ -90,10 +96,11 @@ public class WineBlock extends BlockCrops
     {
         this.level = new IIcon[9];
 
-        for (int i = 0; i < this.level.length; ++i)
+        for (int i = 0; i < this.level.length - 1; ++i)
         {
             this.level[i] = p_149651_1_.registerIcon(this.getTextureName() + "_stage_" + i);
         }
+        this.level[8] = p_149651_1_.registerIcon(this.getTextureName() + "_stage_" + 8 + "w");
     }
     
     @SideOnly(Side.CLIENT)
@@ -123,12 +130,12 @@ public class WineBlock extends BlockCrops
     @Override
     protected Item func_149866_i()
     {
-        return Plant.wineSeed;
+        return Plant.wwineSeed;
     }
     
     @Override
     protected Item func_149865_P()
     {
-        return Plant.wineCrop;
+        return Plant.wwineCrop;
     }
 }

@@ -16,7 +16,6 @@
  */
 package com.raffaele.plantador.blocks;
 
-import com.raffaele.plantador.Info;
 import com.raffaele.plantador.Plantador;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -73,12 +72,14 @@ class CraftingTable extends Block
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float a, float b, float c)
     {
-        if (world.isRemote)
+        /*if (world.isRemote)
         {
             return true;
         }else{
             player.openGui(Plantador.instance, guiID, world, x, y, z);
             return false;
-        }
+        }*/
+        player.openGui(Plantador.instance, guiID, world, x, y, z);
+        return true;
     }
 }

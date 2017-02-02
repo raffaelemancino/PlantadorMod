@@ -16,11 +16,13 @@
  */
 package com.raffaele.plantador;
 
+import com.raffaele.plantador.blocks.barrel.ContainerBarrel;
+import com.raffaele.plantador.blocks.barrel.GuiBarrel;
+import com.raffaele.plantador.blocks.barrel.TileEntityBarrel;
 import com.raffaele.plantador.blocks.sculptortable.GuiSculptor;
 import com.raffaele.plantador.blocks.sculptortable.ContainerSculptor;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.world.World;
 
 /**
@@ -34,6 +36,10 @@ public class GuiHandler implements IGuiHandler{
     {        
         if (ID == Plantador.TABLE_SCULPTOR)
             return new ContainerSculptor(player.inventory, world, x, y, z);
+        if (ID == Plantador.BARREL) {
+            TileEntityBarrel entityBarrel = (TileEntityBarrel)world.getTileEntity(x, y, z);
+            return new ContainerBarrel(player.inventory, entityBarrel);
+        }
         return null;
     }
 
@@ -42,6 +48,10 @@ public class GuiHandler implements IGuiHandler{
     {
         if (ID == Plantador.TABLE_SCULPTOR)
             return new GuiSculptor(player.inventory, world, x, y, z);
+        if (ID == Plantador.BARREL) {
+            TileEntityBarrel entityBarrel = (TileEntityBarrel)world.getTileEntity(x, y, z);
+            return new  GuiBarrel(player.inventory, entityBarrel);
+        }
         return null;
     }
     

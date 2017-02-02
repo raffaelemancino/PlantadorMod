@@ -18,6 +18,7 @@ package com.raffaele.plantador.blocks;
 
 import com.raffaele.plantador.Info;
 import com.raffaele.plantador.Plantador;
+import com.raffaele.plantador.blocks.barrel.TileEntityBarrel;
 import com.raffaele.plantador.blocks.sculptortable.CraftingManagerSculptor;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -91,10 +92,13 @@ public class PlantadorBlocks
         GameRegistry.registerBlock(marble_chiseled, marble_chiseled.getUnlocalizedName());
         
         table_sculptor = new CraftingTable("table_sculptor", Plantador.TABLE_SCULPTOR).setBlockTextureName(Info.ID + ":build/" + "table_sculptor").setCreativeTab(Plantador.tabPlantador);
+        
         GameRegistry.registerBlock(table_sculptor, table_sculptor.getUnlocalizedName());
         
-        barrel = new Barrel(false).setBlockName("barrel").setBlockTextureName(Info.ID + ":" + "barrel").setCreativeTab(Plantador.tabPlantador);
-        barrel_active = new Barrel(true).setBlockName("barrel_active").setBlockTextureName(Info.ID + ":" + "barrel");
+        barrel = new BarrelBlock(false).setBlockName("barrel").setBlockTextureName(Info.ID + ":" + "barrel").setCreativeTab(Plantador.tabPlantador);
+        barrel_active = new BarrelBlock(true).setBlockName("barrel_active").setBlockTextureName(Info.ID + ":" + "barrel");
+        
+        GameRegistry.registerTileEntity(TileEntityBarrel.class, "barrel");
         GameRegistry.registerBlock(barrel, barrel.getUnlocalizedName());
         GameRegistry.registerBlock(barrel_active, barrel_active.getUnlocalizedName());
         
@@ -130,40 +134,6 @@ public class PlantadorBlocks
                 "xx",
                 "xx",
                 'x', new ItemStack(Blocks.stonebrick));
-        CraftingManagerSculptor.getInstance().addShapelessRecipe(new ItemStack(marble), new ItemStack(Blocks.stone)); //marble
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_brick, 4), //marble brick
-                "xx",
-                "xx",
-                'x',new ItemStack(marble));
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_chiseled, 4), //marble brick
-                "xx",
-                "xx",
-                'x',new ItemStack(marble_brick));
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_slab_half, 6), //marble slab
-                "xxx",
-                'x', new ItemStack(marble_brick));
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_stairs, 4), //marble stairs
-                "  x",
-                " xx",
-                "xxx",
-                'x', new ItemStack(marble_brick));
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_doric), //marble doric
-                "x",
-                "x",
-                "x",
-                'x',new ItemStack(marble));
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_ionic), //marble ionic
-                "y",
-                "x",
-                "x",
-                'x',new ItemStack(marble),
-                'y',new ItemStack(marble_brick));
-        CraftingManagerSculptor.getInstance().addRecipe(new ItemStack(marble_corinthian), //marble corinthian
-                "y",
-                "x",
-                "y",
-                'x',new ItemStack(marble),
-                'y',new ItemStack(marble_brick));
         //barrel
         for(int i=0;i<6;i++)
         {

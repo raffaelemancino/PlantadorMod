@@ -22,9 +22,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -32,14 +32,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.block.Block;
 
 /**
  *
  * @author Raffaele Francesco Mancino
  */
-public class Barrel extends Block
+public class BarrelBlock extends BlockContainer
 {
     
     @SideOnly(Side.CLIENT)
@@ -48,9 +48,12 @@ public class Barrel extends Block
     private final boolean isBrewing2;
     private final Random random = new Random();
     
-    public Barrel(boolean active)
+    public BarrelBlock(boolean active)
     {
         super(Material.wood);
+        this.setHardness(2.0F);
+        this.setResistance(5.0F);
+        this.setStepSound(soundTypeWood);
         this.isBrewing2 = active;
     }
     
@@ -91,68 +94,13 @@ public class Barrel extends Block
     public Item getItem(World world, int x, int y, int z) {
         return Item.getItemFromBlock(PlantadorBlocks.barrel);
     }
-    
-    @Override
-    public void onBlockAdded(World world, int x, int y, int z) {
-        super.onBlockAdded(world, x, y, z);
-        this.direction(world, x, y, z);
-    }
-
-    private void direction(World world, int x, int y, int z) {
-        if (!world.isRemote)
-        {
-            Block blockdz = world.getBlock(x, y, z - 1);
-            Block blocksz = world.getBlock(x, y, z + 1);
-            Block blockdx = world.getBlock(x - 1, y, z);
-            Block blocksx = world.getBlock(x + 1, y, z);
-            byte direction=3;
-            if( blockdz.func_149730_j() && !blocksz.func_149730_j() )
-            {
-                direction=3;
-            }
-            if( !blockdz.func_149730_j() && blocksz.func_149730_j() )
-            {
-                direction=2;
-            }
-            if( blockdx.func_149730_j() && !blocksx.func_149730_j() )
-            {
-                direction=5;
-            }
-            if( blockdz.func_149730_j() && !blocksz.func_149730_j() )
-            {
-                direction=4;
-            }
-            world.setBlockMetadataWithNotify(x, y, z, direction, 2);
-            world.spawnParticle(textureName, minX, minX, minX, minX, minX, minX);
-        }
-    }
-    
-    @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemstack) {
-	int direction = MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-        
-	if (direction == 0) {
-            world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-	}
-        if (direction == 1) {
-            world.setBlockMetadataWithNotify(x, y, z, 5, 2);
-	}
-        if (direction == 2) {
-            world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-	}
-	if (direction == 3) {
-            world.setBlockMetadataWithNotify(x, y, z, 4, 2);
-	}
-        if (itemstack.hasDisplayName()) {
-            //((TileEntityTutFurnace) world.getTileEntity(x, y, z)).furnaceName(itemstack.getDisplayName());
-	}
-    }
-
-    @Override
-    public TileEntity createTileEntity(World world, int metadata) {
+       
+        @Override
+    public TileEntity createNewTileEntity(World world, int metadata) {
         return new TileEntityBarrel();
     }
     
+    @Override
     public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
 		if (!isBrewing) {
 			TileEntityBarrel tileEntityBarrel = (TileEntityBarrel) world.getTileEntity(x, y, z);
@@ -194,9 +142,43 @@ public class Barrel extends Block
 		super.breakBlock(world, x, y, z, block, meta);
 	}
     
-    /**
-    * continuare
-    * https://www.youtube.com/watch?v=lCH-S4LPF0E    
-    */
+    public static void updateBarrelBlockState(boolean bool, World world, int x, int y, int z)
+    {
+        int l = world.getBlockMetadata(x, y, z);
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        isBrewing = true;
+
+        if (bool)
+        {
+            world.setBlock(x, y, z, PlantadorBlocks.barrel_active);
+        }
+        else
+        {
+            world.setBlock(x, y, z, PlantadorBlocks.barrel);
+        }
+
+        isBrewing = false;
+        world.setBlockMetadataWithNotify(x, y, z, l, 2);
+
+        if (tileentity != null)
+        {
+            tileentity.validate();
+            world.setTileEntity(x, y, z, tileentity);
+        }
+    }
     
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void randomDisplayTick(World world, int x, int y, int z, Random random)
+    {
+        if (this.isBrewing2)
+        {
+            float rx = random.nextFloat();
+            float rz = random.nextFloat();
+            world.spawnParticle("smoke", (double)(x + rx), (double)y+1.2F, (double)(z + rz), 0.0D, 0.0D, 0.0D);
+            rx = random.nextFloat();
+            rz = random.nextFloat();
+            world.spawnParticle("spell", (double)(x + rx), (double)y+1.2F, (double)(z + rz), 0.0D, 0.0D, 0.0D);
+        }
+    }
 }

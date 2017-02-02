@@ -9,8 +9,10 @@ item.tobacco.name=Tobacco
 item.pipe.name=Pipe
 
 #wine
-item.wine_seed.name=Grapes Seed
-item.wine_crop.name=Grapes
+item.rwine_seed.name=Red Grapes Seed
+item.rwine_crop.name=Red Grapes
+item.wwine_seed.name=White Grapes Seed
+item.wwine_crop.name=White Grapes
 
 #coffee
 item.coffee_seed.name=Coffee Seed
@@ -55,6 +57,8 @@ item.coffeepot_neapolis_loaded.name=Neapolitan Coffeepot Loaded
 item.coffeepot_neapolis_cooked.name=Neapolitan Coffeepot Cooked
 item.amphora.name=Amphora
 item.amphora_raw.name=Amphora Raw
+item.rwine_bucket.name=Red Wine Bucket
+item.wwine_bucket.name=White Wine Bucket
 
 #tab
 itemGroup.tabPlantador=Plantador

@@ -16,10 +16,20 @@
  */
 package com.raffaele.plantador.blocks.sculptortable;
 
+import com.raffaele.plantador.blocks.PlantadorBlocks;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble_brick;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble_chiseled;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble_corinthian;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble_doric;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble_ionic;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble_slab_half;
+import static com.raffaele.plantador.blocks.PlantadorBlocks.marble_stairs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,6 +46,45 @@ public class CraftingManagerSculptor
 {
     public static final CraftingManagerSculptor instance = new CraftingManagerSculptor();
     private List recipes = new ArrayList();
+
+    public CraftingManagerSculptor()
+    {
+        this.addShapelessRecipe(new ItemStack(PlantadorBlocks.marble), new ItemStack(Blocks.stone)); //marble
+        this.addRecipe(new ItemStack(PlantadorBlocks.marble_brick, 4), //marble brick
+                "xx",
+                "xx",
+                'x',new ItemStack(PlantadorBlocks.marble));
+        this.addRecipe(new ItemStack(PlantadorBlocks.marble_chiseled, 4), //marble brick
+                "xx",
+                "xx",
+                'x',new ItemStack(PlantadorBlocks.marble_brick));
+        this.addRecipe(new ItemStack(PlantadorBlocks.marble_slab_half, 6), //marble slab
+                "xxx",
+                'x', new ItemStack(PlantadorBlocks.marble_brick));
+        this.addRecipe(new ItemStack(PlantadorBlocks.marble_stairs, 4), //marble stairs
+                "  x",
+                " xx",
+                "xxx",
+                'x', new ItemStack(PlantadorBlocks.marble_brick));
+        this.addRecipe(new ItemStack(PlantadorBlocks.marble_doric), //marble doric
+                "x",
+                "x",
+                "x",
+                'x',new ItemStack(PlantadorBlocks.marble));
+        this.addRecipe(new ItemStack(PlantadorBlocks.marble_ionic), //marble ionic
+                "y",
+                "x",
+                "x",
+                'x',new ItemStack(PlantadorBlocks.marble),
+                'y',new ItemStack(PlantadorBlocks.marble_brick));
+        this.addRecipe(new ItemStack(PlantadorBlocks.marble_corinthian), //marble corinthian
+                "y",
+                "x",
+                "y",
+                'x',new ItemStack(PlantadorBlocks.marble),
+                'y',new ItemStack(PlantadorBlocks.marble_brick));
+    }
+    
 
     public static CraftingManagerSculptor getInstance() {
         return instance;
